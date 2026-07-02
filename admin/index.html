@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Portal — Nasheed &amp; Co</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#0a1d31" />
+  <link rel="icon" type="image/webp" href="../assets/img/logo-crest.webp" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+
+  <!-- ================= Login ================= -->
+  <section class="login" id="login">
+    <div class="login__card">
+      <img class="login__crest" src="../assets/img/shield-navy.webp" alt="Nasheed & Co" />
+      <p class="login__ey">Nasheed &amp; Co</p>
+      <h1 class="login__title">Staff Portal</h1>
+      <p class="login__sub">Sign in to manage the website content.</p>
+
+      <div class="login__err" id="loginErr">Incorrect username or password.</div>
+
+      <form id="loginForm" autocomplete="off">
+        <div class="field">
+          <label for="lu">Username</label>
+          <input id="lu" name="username" type="text" placeholder="admin" required />
+        </div>
+        <div class="field">
+          <label for="lp">Password</label>
+          <input id="lp" name="password" type="password" placeholder="••••••••" required />
+        </div>
+        <button class="btn btn--gold btn--block" type="submit">Sign in</button>
+      </form>
+
+      <p class="login__hint">Demo access — <b>admin</b> / <b>nasheed2026</b></p>
+      <a class="login__back" href="../">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+        Back to website
+      </a>
+    </div>
+  </section>
+
+  <!-- ================= App ================= -->
+  <div class="admin hidden" id="app">
+    <div class="sidebar__scrim" id="sideScrim"></div>
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar__brand">
+        <img src="../assets/img/shield-navy.webp" alt="" />
+        <div><b>Nasheed &amp; Co</b><span>Admin Portal</span></div>
+      </div>
+      <nav class="sidebar__nav" id="sideNav">
+        <button class="navitem active" data-view="dashboard">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
+          Dashboard
+        </button>
+        <button class="navitem" data-view="insights">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          Insights
+        </button>
+        <button class="navitem" data-view="enquiries">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H5.17L4 17.17V4z"/></svg>
+          Enquiries <span class="badge badge--count" id="enqBadge" hidden>0</span>
+        </button>
+        <button class="navitem" data-view="areas">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11 12 2l3 9"/><path d="m16 16 3-8 3 8c-2 1.5-4 1.5-6 0"/><path d="m2 16 3-8 3 8c-2 1.5-4 1.5-6 0"/><path d="M7 21h10"/><path d="M12 11v10"/></svg>
+          Practice Areas
+        </button>
+        <button class="navitem" data-view="settings">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          Settings
+        </button>
+      </nav>
+      <div class="sidebar__foot">
+        <a class="navitem" href="../" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg>
+          View website
+        </a>
+        <button class="navitem" id="logoutBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>
+          Log out
+        </button>
+      </div>
+    </aside>
+
+    <div class="main">
+      <header class="topbar">
+        <div style="display:flex;align-items:center;gap:.8rem">
+          <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+          <div class="topbar__title">
+            <h1 id="viewTitle">Dashboard</h1>
+            <p id="viewSub">Overview of your website</p>
+          </div>
+        </div>
+        <div class="topbar__right">
+          <div class="userchip"><span class="userchip__av">N</span> Administrator</div>
+        </div>
+      </header>
+      <div class="view" id="viewContent"><!-- rendered by admin.js --></div>
+    </div>
+  </div>
+
+  <!-- ================= Modal ================= -->
+  <div class="modal" id="modal">
+    <div class="modal__scrim" id="modalScrim"></div>
+    <div class="modal__card">
+      <div class="modal__head">
+        <h3 id="modalTitle">Insight</h3>
+        <button class="modal__close" id="modalClose" aria-label="Close">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="modal__body" id="modalBody"></div>
+      <div class="modal__foot">
+        <button class="btn btn--ghost" id="modalCancel">Cancel</button>
+        <button class="btn btn--gold" id="modalSave">Save insight</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= Toast ================= -->
+  <div class="saved-toast" id="toast">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+    <span id="toastMsg">Saved</span>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>

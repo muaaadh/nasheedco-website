@@ -6,9 +6,48 @@
   const $  = (s, c = document) => c.querySelector(s);
   const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
 
+  /* ---- Shared storage helpers (also used by the admin portal) ---- */
+  const LS = {
+    get(k, d) { try { const v = JSON.parse(localStorage.getItem(k)); return v == null ? d : v; } catch (e) { return d; } },
+    set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); return true; } catch (e) { return false; } }
+  };
+  const esc = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const fmtDate = (d) => {
+    const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(d || '');
+    if (!m) return d || '';
+    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    return months[+m[2] - 1] + ' ' + (+m[3]) + ', ' + m[1];
+  };
+
   /* ---- Year ---- */
   const yearEl = $('#year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  /* ---- Insights: hydrate from admin-managed content if present ---- */
+  const insightsGrid = $('#insightsGrid');
+  const storedPosts = LS.get('nc_insights', null);
+  if (insightsGrid && Array.isArray(storedPosts)) {
+    const pub = storedPosts.filter(p => p && p.published);
+    if (pub.length) {
+      const arrow = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+      insightsGrid.innerHTML = pub.map((p, i) => {
+        const href = /^https?:\/\//.test(p.url || '') ? esc(p.url) : '#insights';
+        const img = esc(p.img || 'banner.webp');
+        return `<article class="post reveal"${i > 0 ? ` data-d="${Math.min(i, 2)}"` : ''}>
+          <a class="post__thumb" href="${href}" target="_blank" rel="noopener">
+            <span class="post__cat">${esc(p.category || 'Insight')}</span>
+            <img src="assets/img/${img}" alt="${esc(p.title)}" loading="lazy" />
+          </a>
+          <div class="post__body">
+            <span class="post__date">${esc(fmtDate(p.date))}</span>
+            <h3 class="post__title">${esc(p.title)}</h3>
+            <p class="post__excerpt">${esc(p.excerpt || '')}</p>
+            <a class="textlink" href="${href}" target="_blank" rel="noopener">Read more ${arrow}</a>
+          </div>
+        </article>`;
+      }).join('');
+    }
+  }
 
   /* ---- Sticky header state ---- */
   const header = $('#siteHeader');
@@ -172,11 +211,28 @@
   if (form) {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+
+      // Persist the enquiry so the admin portal can read it (demo — same device only)
+      const enquiry = {
+        id: 'e' + Date.now().toString(36) + Math.floor(Math.random() * 1e4).toString(36),
+        name: form.name.value.trim(),
+        organisation: form.organisation.value.trim(),
+        email: form.email.value.trim(),
+        matter: form.matter.value,
+        message: form.message.value.trim(),
+        date: new Date().toISOString(),
+        read: false
+      };
+      const list = LS.get('nc_enquiries', []);
+      list.unshift(enquiry);
+      LS.set('nc_enquiries', list);
+
       const ok = $('#formSuccess');
       if (ok) {
         ok.classList.add('show');
         ok.querySelector('span').textContent =
-          'Thank you — your enquiry has been noted. A member of our team will be in touch shortly. (Demo form: no data is sent.)';
+          'Thank you, ' + (enquiry.name || 'there') + ' — your enquiry has been recorded. A member of our team will be in touch shortly.';
       }
       form.querySelector('button[type="submit"]').textContent = 'Enquiry received';
       form.reset();
