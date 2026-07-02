@@ -33,9 +33,10 @@
       insightsGrid.innerHTML = pub.map((p, i) => {
         const href = /^https?:\/\//.test(p.url || '') ? esc(p.url) : '#insights';
         const img = esc(p.img || 'banner.webp');
-        return `<article class="post reveal"${i > 0 ? ` data-d="${Math.min(i, 2)}"` : ''}>
+        const cat = esc(p.category || 'Insight');
+        return `<article class="post reveal"${i > 0 ? ` data-d="${Math.min(i, 2)}"` : ''} data-category="${cat}">
           <a class="post__thumb" href="${href}" target="_blank" rel="noopener">
-            <span class="post__cat">${esc(p.category || 'Insight')}</span>
+            <span class="post__cat">${cat}</span>
             <img src="assets/img/${img}" alt="${esc(p.title)}" loading="lazy" />
           </a>
           <div class="post__body">
@@ -46,6 +47,29 @@
           </div>
         </article>`;
       }).join('');
+    }
+  }
+
+  /* ---- Insights: topic filter ---- */
+  const insightsFilters = $('#insightsFilters');
+  if (insightsGrid && insightsFilters) {
+    const posts = () => $$('.post', insightsGrid);
+    const cats = [];
+    posts().forEach(p => { const c = (p.dataset.category || '').trim(); if (c && !cats.includes(c)) cats.push(c); });
+    if (cats.length >= 2) {
+      insightsFilters.hidden = false;
+      insightsFilters.innerHTML = ['All', ...cats]
+        .map((c, i) => `<button type="button" class="chip${i === 0 ? ' is-active' : ''}" data-cat="${i === 0 ? '*' : esc(c)}">${esc(c)}</button>`)
+        .join('');
+      insightsFilters.addEventListener('click', (e) => {
+        const btn = e.target.closest('.chip');
+        if (!btn) return;
+        $$('.chip', insightsFilters).forEach(c => c.classList.toggle('is-active', c === btn));
+        const want = btn.dataset.cat;
+        posts().forEach(p => {
+          p.classList.toggle('is-hidden', !(want === '*' || (p.dataset.category || '') === want));
+        });
+      });
     }
   }
 
@@ -71,6 +95,7 @@
   scrim  && scrim.addEventListener('click', () => setNav(false));
   $$('#navLinks a').forEach(a => a.addEventListener('click', () => setNav(false)));
   document.addEventListener('keydown', e => { if (e.key === 'Escape') setNav(false); });
+  if (/[?&]nav=1/.test(location.search)) setNav(true); // dev/screenshot hook
 
   /* ---- Scroll reveal ---- */
   const revealEls = $$('.reveal');

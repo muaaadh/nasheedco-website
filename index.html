@@ -69,8 +69,8 @@
         </button>
       </div>
     </div>
+    <div class="nav__scrim" id="navScrim" aria-hidden="true"></div>
   </header>
-  <div class="nav__scrim" id="navScrim" aria-hidden="true"></div>
 
   <main id="main">
     <!-- ================= Hero ================= -->
@@ -97,7 +97,7 @@
 
           <aside class="hero__card">
             <p class="kicker">The Firm</p>
-            <img class="hero__crest" src="assets/img/mark-white.webp" alt="Nasheed & Co crest" />
+            <img class="hero__logo" src="assets/img/logo-primary.webp" alt="Nasheed & Co — corporate & commercial lawyers" />
             <p>Corporate&nbsp;· Commercial&nbsp;· Litigation<br/>A legal concierge for every client.</p>
             <div class="hero__badge"><b>Est. 1997</b><span>Malé, Maldives</span></div>
           </aside>
@@ -355,8 +355,10 @@
           <p class="section__intro">Concise, practical summaries of the laws and regulations shaping business in the Maldives.</p>
         </div>
 
+        <div class="insights__filters reveal" id="insightsFilters" role="group" aria-label="Filter insights by topic" hidden></div>
+
         <div class="insights__grid" id="insightsGrid">
-          <article class="post reveal">
+          <article class="post reveal" data-category="Forex">
             <a class="post__thumb" href="https://www.nasheeds.co/blog/new-forex-bill-in-the-maldives-what-businesses-need-to-know" target="_blank" rel="noopener">
               <span class="post__cat">Forex</span>
               <img src="assets/img/texture.webp" alt="Hands counting US dollar notes" loading="lazy" />
@@ -371,7 +373,7 @@
             </div>
           </article>
 
-          <article class="post reveal" data-d="1">
+          <article class="post reveal" data-d="1" data-category="Regulation">
             <a class="post__thumb" href="https://www.nasheeds.co/news/maldives-to-enforce-new-seaplane-platform-licensing-regulation" target="_blank" rel="noopener">
               <span class="post__cat">Regulation</span>
               <img src="assets/img/untitled-38.webp" alt="A Maldivian government gazette document" loading="lazy" />
@@ -386,7 +388,7 @@
             </div>
           </article>
 
-          <article class="post reveal" data-d="2">
+          <article class="post reveal" data-d="2" data-category="Tourism">
             <a class="post__thumb" href="https://www.nasheeds.co/blog/lease-extension-development-under-the-15th-amendment-to-the-tourism-act" target="_blank" rel="noopener">
               <span class="post__cat">Tourism</span>
               <img src="assets/img/img-4610.webp" alt="Maldivian resort water villas" loading="lazy" />
