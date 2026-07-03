@@ -18,7 +18,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Libre+Franklin:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
@@ -105,18 +105,30 @@
       </div>
     </section>
 
-    <!-- ================= Credibility bar ================= -->
+    <!-- ================= Credibility bar (sliding marquee) ================= -->
     <section class="credbar" aria-label="Sectors we serve">
       <div class="wrap credbar__inner">
         <span class="credbar__label">Trusted across</span>
-        <ul class="credbar__list">
-          <li>Resorts &amp; Hospitality</li>
-          <li>Aviation</li>
-          <li>Banking &amp; Finance</li>
-          <li>Telecom</li>
-          <li>Insurance</li>
-          <li>Corporates</li>
-        </ul>
+        <div class="credbar__marquee">
+          <div class="credbar__track">
+            <ul class="credbar__group">
+              <li>Resorts &amp; Hospitality</li>
+              <li>Aviation</li>
+              <li>Banking &amp; Finance</li>
+              <li>Telecom</li>
+              <li>Insurance</li>
+              <li>Corporates</li>
+            </ul>
+            <ul class="credbar__group" aria-hidden="true">
+              <li>Resorts &amp; Hospitality</li>
+              <li>Aviation</li>
+              <li>Banking &amp; Finance</li>
+              <li>Telecom</li>
+              <li>Insurance</li>
+              <li>Corporates</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
 
