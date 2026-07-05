@@ -54,11 +54,18 @@
     ['Employment Matters', 'litigation'], ['Debt Recovery & Collection', 'litigation'], ['Injury & Compensation', 'litigation'], ['Family Matters', 'litigation'], ['Intellectual Property', 'litigation'], ['Contractual Disputes', 'litigation'], ['Defamation', 'litigation'], ['Property & Boundary', 'litigation'], ['Judicial Review', 'litigation']
   ].map((a, i) => ({ id: 'a' + (i + 1), name: a[0], group: a[1], enabled: true }));
   const SEED_SETTINGS = { phone: '+960 331 8558', email: 'office@nasheeds.co', address: '3rd Floor, H. Magma, Sikka Goalhi, Malé 20082, Republic of Maldives', linkedin: 'https://www.linkedin.com/company/nasheed-and-co' };
+  const SEED_TEAM = [
+    { id: 't1', name: 'Ahmed Nasheed', role: 'Managing Partner', bio: 'Founded the firm in 1997. Leads on corporate structuring, foreign investment and resort development for some of the Maldives’ largest enterprises.', tags: ['Corporate', 'Foreign Investment', 'Tourism'], published: true },
+    { id: 't2', name: 'Aishath Rasheedha', role: 'Senior Associate · Corporate & Commercial', bio: 'Advises banks, insurers and telecoms on financing, regulatory compliance and high-value commercial contracts and acquisitions.', tags: ['Banking & Finance', 'M&A'], published: true },
+    { id: 't3', name: 'Ibrahim Waheed', role: 'Head of Litigation & Disputes', bio: 'Represents clients in contractual, employment and property disputes before the civil courts and in arbitration.', tags: ['Litigation', 'Arbitration'], published: true },
+    { id: 't4', name: 'Fathimath Zahaa', role: 'Associate · Regulatory & Employment', bio: 'Focuses on employment matters, GST/TGST and sector regulation for the firm’s aviation and hospitality clients.', tags: ['Employment', 'Tax', 'Aviation'], published: true }
+  ];
 
   function seed() {
     if (LS.get('nc_insights', null) == null) LS.set('nc_insights', SEED_INSIGHTS);
     if (LS.get('nc_areas', null) == null) LS.set('nc_areas', SEED_AREAS);
     if (LS.get('nc_settings', null) == null) LS.set('nc_settings', SEED_SETTINGS);
+    if (LS.get('nc_team', null) == null) LS.set('nc_team', SEED_TEAM);
     if (LS.get('nc_enquiries', null) == null) LS.set('nc_enquiries', []);
   }
 
@@ -102,6 +109,7 @@
     insights: { title: 'Insights', sub: 'Manage articles shown on the website', render: renderInsights },
     enquiries: { title: 'Enquiries', sub: 'Messages from the website contact form', render: renderEnquiries },
     areas: { title: 'Practice Areas', sub: 'Toggle and edit the areas you list', render: renderAreas },
+    team: { title: 'Our Team', sub: 'Manage the people shown on the website', render: renderTeam },
     settings: { title: 'Settings', sub: 'Firm contact details & demo data', render: renderSettings }
   };
   let current = 'dashboard';
@@ -270,6 +278,47 @@
       </div>`;
   }
 
+  /* ---------------- Our Team ---------------- */
+  function teamInitials(name) {
+    return (String(name || '').trim().split(/\s+/).map(w => w[0] || '').slice(0, 2).join('') || '—').toUpperCase();
+  }
+  function renderTeam() {
+    const team = LS.get('nc_team', []);
+    const shown = team.filter(m => m.published).length;
+    const cards = team.map(m => `
+      <div class="member-row ${m.published ? '' : 'off'}">
+        <div class="member-row__av">${esc(teamInitials(m.name))}</div>
+        <div class="member-row__main">
+          <div class="member-row__name">${esc(m.name)}</div>
+          <div class="member-row__role">${esc(m.role || '')}</div>
+          ${m.bio ? `<p class="member-row__bio">${esc(m.bio)}</p>` : ''}
+          ${(m.tags && m.tags.length) ? `<div class="member-row__tags">${m.tags.map(t => `<span>${esc(t)}</span>`).join('')}</div>` : ''}
+        </div>
+        <div class="member-row__actions">
+          <label class="switch" title="${m.published ? 'Shown on website' : 'Hidden'}"><input type="checkbox" data-act="toggle-member" data-id="${m.id}" ${m.published ? 'checked' : ''}><span class="switch__track"></span></label>
+          <button class="iconbtn iconbtn--danger" title="Remove" data-act="del-member" data-id="${m.id}">${ICON.trash}</button>
+        </div>
+      </div>`).join('');
+
+    return `
+      <div class="view__head">
+        <div><h2>Our Team</h2><p>${shown} of ${team.length} shown · these appear in the “Our Team” section of the website.</p></div>
+      </div>
+      <div class="panel" style="margin-bottom:18px">
+        <div class="panel__body">
+          <form id="teamAddForm" style="display:flex;flex-wrap:wrap;gap:.7rem;align-items:flex-end">
+            <div class="field" style="flex:1;min-width:170px;margin:0"><label for="tmName">Name</label><input id="tmName" type="text" placeholder="e.g. Aishath Ali" required></div>
+            <div class="field" style="flex:1;min-width:170px;margin:0"><label for="tmRole">Role / title</label><input id="tmRole" type="text" placeholder="e.g. Associate"></div>
+            <div class="field" style="flex:2;min-width:220px;margin:0"><label for="tmBio">Short bio</label><input id="tmBio" type="text" placeholder="One line about them"></div>
+            <button class="btn btn--gold" type="submit">${ICON.plus} Add</button>
+          </form>
+        </div>
+      </div>
+      <div class="panel">
+        ${team.length ? `<div class="member-list">${cards}</div>` : emptyState(ICON.doc, 'No team members yet', 'Add your first team member to show them on the website.')}
+      </div>`;
+  }
+
   /* ---------------- Settings ---------------- */
   function renderSettings() {
     const s = LS.get('nc_settings', SEED_SETTINGS);
@@ -327,9 +376,12 @@
       case 'del-area':
         if (confirm('Remove this practice area?')) { removeFrom('nc_areas', id); toast('Area removed'); route(current); }
         break;
+      case 'del-member':
+        if (confirm('Remove this team member?')) { removeFrom('nc_team', id); toast('Member removed'); route(current); }
+        break;
       case 'reset-content':
-        if (confirm('Reset insights, practice areas and settings to defaults?')) {
-          LS.set('nc_insights', SEED_INSIGHTS); LS.set('nc_areas', SEED_AREAS); LS.set('nc_settings', SEED_SETTINGS);
+        if (confirm('Reset insights, team, practice areas and settings to defaults?')) {
+          LS.set('nc_insights', SEED_INSIGHTS); LS.set('nc_areas', SEED_AREAS); LS.set('nc_team', SEED_TEAM); LS.set('nc_settings', SEED_SETTINGS);
           toast('Content reset to defaults'); route(current);
         }
         break;
@@ -347,6 +399,10 @@
       const row = t.closest('.area-row'); if (row) row.classList.toggle('off', !t.checked);
       updateBadges();
     }
+    if (t.dataset && t.dataset.act === 'toggle-member') {
+      mutate('nc_team', t.dataset.id, m => (m.published = t.checked));
+      const row = t.closest('.member-row'); if (row) row.classList.toggle('off', !t.checked);
+    }
   });
 
   /* Delegated submit (add area + settings) */
@@ -357,6 +413,14 @@
       const group = $('#naGroup').value;
       const areas = LS.get('nc_areas', []); areas.push({ id: uid('a'), name, group, enabled: true }); LS.set('nc_areas', areas);
       toast('Practice area added'); route('areas');
+    }
+    if (e.target.id === 'teamAddForm') {
+      e.preventDefault();
+      const name = $('#tmName').value.trim(); if (!name) return;
+      const team = LS.get('nc_team', []);
+      team.push({ id: uid('t'), name, role: $('#tmRole').value.trim(), bio: $('#tmBio').value.trim(), tags: [], published: true });
+      LS.set('nc_team', team);
+      toast('Team member added'); route('team');
     }
     if (e.target.id === 'settingsForm') {
       e.preventDefault();

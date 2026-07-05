@@ -281,6 +281,7 @@ ul{ margin:0; padding:0; list-style:none; }
   background:linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.03));
   border:1px solid var(--line-light);
   padding:clamp(28px,4vw,44px); text-align:center;
+  padding-bottom:clamp(60px,7vw,72px); /* clearance so the Est. badge never overlaps the text */
   box-shadow:var(--shadow-lg);
   backdrop-filter:blur(4px);
 }
@@ -292,12 +293,13 @@ ul{ margin:0; padding:0; list-style:none; }
 .hero__card .kicker{ font-family:var(--sans); font-size:.68rem; letter-spacing:.3em; text-transform:uppercase; color:var(--gold-soft); }
 .hero__badge{
   position:absolute; right:-14px; bottom:-14px;
-  background:var(--gold); color:var(--navy-900);
+  background:linear-gradient(180deg, #bd9548 0%, #9a7730 100%); color:#fff;
   border-radius:14px; padding:.7rem 1rem; text-align:left;
   box-shadow:var(--shadow-md); line-height:1.1;
+  text-shadow:0 1px 1px rgba(60,44,10,.35);
 }
-.hero__badge b{ display:block; font-family:var(--serif); font-size:1.35rem; font-weight:600; }
-.hero__badge span{ font-size:.66rem; letter-spacing:.14em; text-transform:uppercase; font-weight:600; }
+.hero__badge b{ display:block; font-family:var(--serif); font-size:1.35rem; font-weight:600; color:#fff; }
+.hero__badge span{ font-size:.66rem; letter-spacing:.14em; text-transform:uppercase; font-weight:600; color:rgba(255,255,255,.85); }
 
 @media (max-width:860px){
   .hero__grid{ grid-template-columns:1fr; }
@@ -479,6 +481,36 @@ ul{ margin:0; padding:0; list-style:none; }
 .sector__tags{ display:flex; flex-wrap:wrap; gap:.4rem; margin-top:1rem; }
 .sector__tags span{ font-size:.74rem; padding:.35em .7em; border-radius:999px; background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.2); }
 @media (max-width:900px){ .sectors__grid{ grid-template-columns:1fr; } .sector{ min-height:320px; } }
+
+/* =========================================================
+   Our Team
+   ========================================================= */
+.team{ background:var(--ivory); }
+.team__grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(18px,2.4vw,26px); }
+.member{
+  position:relative; overflow:hidden; text-align:center;
+  background:var(--paper); border:1px solid var(--line); border-radius:var(--r-lg);
+  padding:clamp(24px,2.6vw,32px) clamp(20px,2.4vw,28px); box-shadow:var(--shadow-sm);
+  transition:transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s;
+}
+.member:hover{ transform:translateY(-5px); box-shadow:var(--shadow-md); border-color:transparent; }
+.member::after{ content:""; position:absolute; top:0; left:0; right:0; height:3px; background:var(--gold); transform:scaleX(0); transform-origin:left; transition:transform .45s var(--ease); }
+.member:hover::after{ transform:scaleX(1); }
+.member__av{
+  width:78px; height:78px; margin:0 auto 1.1rem; border-radius:50%;
+  display:grid; place-items:center;
+  font-family:var(--serif); font-weight:600; font-size:1.5rem; letter-spacing:.02em;
+  color:var(--gold-soft); background:linear-gradient(160deg, var(--navy-600), var(--navy-900));
+  box-shadow:inset 0 0 0 1px rgba(194,161,94,.5), 0 12px 24px -12px rgba(10,29,49,.55);
+}
+.member__name{ font-size:1.24rem; color:var(--navy); }
+.member__role{ font-size:.74rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--gold-deep); margin-top:.4rem; }
+.member__bio{ color:var(--muted); font-size:.92rem; margin-top:.85rem; }
+.member__tags{ display:flex; flex-wrap:wrap; justify-content:center; gap:.4rem; margin-top:1.1rem; }
+.member__tags span{ font-size:.72rem; font-weight:500; padding:.34em .75em; border-radius:999px; background:var(--ivory); border:1px solid var(--line); color:var(--navy-700); }
+@media (max-width:1000px){ .team__grid{ grid-template-columns:repeat(2,1fr); } }
+@media (max-width:520px){ .team__grid{ grid-template-columns:1fr; max-width:360px; margin-inline:auto; } }
+@media (prefers-reduced-motion:reduce){ .member::after{ transition:none; } .member:hover{ transform:none; } }
 
 /* =========================================================
    Insights

@@ -50,6 +50,26 @@
     }
   }
 
+  /* ---- Team: hydrate from admin-managed content if present ---- */
+  const teamGrid = $('#teamGrid');
+  const storedTeam = LS.get('nc_team', null);
+  if (teamGrid && Array.isArray(storedTeam)) {
+    const vis = storedTeam.filter(m => m && m.published);
+    if (vis.length) {
+      const initials = (name) => (String(name || '').trim().split(/\s+/).map(w => w[0] || '').slice(0, 2).join('') || '—').toUpperCase();
+      teamGrid.innerHTML = vis.map((m, i) => {
+        const tags = (m.tags || []).map(t => `<span>${esc(t)}</span>`).join('');
+        return `<article class="member reveal"${i > 0 ? ` data-d="${Math.min(i, 3)}"` : ''}>
+          <div class="member__av">${esc(initials(m.name))}</div>
+          <h3 class="member__name">${esc(m.name)}</h3>
+          <p class="member__role">${esc(m.role || '')}</p>
+          <p class="member__bio">${esc(m.bio || '')}</p>
+          ${tags ? `<div class="member__tags">${tags}</div>` : ''}
+        </article>`;
+      }).join('');
+    }
+  }
+
   /* ---- Insights: topic filter ---- */
   const insightsFilters = $('#insightsFilters');
   if (insightsGrid && insightsFilters) {
