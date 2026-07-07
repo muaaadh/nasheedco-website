@@ -609,6 +609,18 @@
     </div>
   </footer>
 
+  <!-- ================= Member profile modal ================= -->
+  <div class="pmodal" id="memberModal" aria-hidden="true">
+    <div class="pmodal__scrim" data-pclose></div>
+    <div class="pmodal__dialog" role="dialog" aria-modal="true" aria-labelledby="pmName">
+      <button class="pmodal__close" data-pclose aria-label="Close profile">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+      <div class="pmodal__body" id="memberModalBody"><!-- filled by main.js --></div>
+    </div>
+  </div>
+
+  <script src="assets/js/team-data.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>

@@ -54,12 +54,7 @@
     ['Employment Matters', 'litigation'], ['Debt Recovery & Collection', 'litigation'], ['Injury & Compensation', 'litigation'], ['Family Matters', 'litigation'], ['Intellectual Property', 'litigation'], ['Contractual Disputes', 'litigation'], ['Defamation', 'litigation'], ['Property & Boundary', 'litigation'], ['Judicial Review', 'litigation']
   ].map((a, i) => ({ id: 'a' + (i + 1), name: a[0], group: a[1], enabled: true }));
   const SEED_SETTINGS = { phone: '+960 331 8558', email: 'office@nasheeds.co', address: '3rd Floor, H. Magma, Sikka Goalhi, Malé 20082, Republic of Maldives', linkedin: 'https://www.linkedin.com/company/nasheed-and-co' };
-  const SEED_TEAM = [
-    { id: 't1', name: 'Ahmed Nasheed', role: 'Managing Partner', bio: 'Founded the firm in 1997. Leads on corporate structuring, foreign investment and resort development for some of the Maldives’ largest enterprises.', tags: ['Corporate', 'Foreign Investment', 'Tourism'], published: true },
-    { id: 't2', name: 'Aishath Rasheedha', role: 'Senior Associate · Corporate & Commercial', bio: 'Advises banks, insurers and telecoms on financing, regulatory compliance and high-value commercial contracts and acquisitions.', tags: ['Banking & Finance', 'M&A'], published: true },
-    { id: 't3', name: 'Ibrahim Waheed', role: 'Head of Litigation & Disputes', bio: 'Represents clients in contractual, employment and property disputes before the civil courts and in arbitration.', tags: ['Litigation', 'Arbitration'], published: true },
-    { id: 't4', name: 'Fathimath Zahaa', role: 'Associate · Regulatory & Employment', bio: 'Focuses on employment matters, GST/TGST and sector regulation for the firm’s aviation and hospitality clients.', tags: ['Employment', 'Tax', 'Aviation'], published: true }
-  ];
+  const SEED_TEAM = Array.isArray(window.NC_TEAM_SEED) ? window.NC_TEAM_SEED : [];
 
   function seed() {
     if (LS.get('nc_insights', null) == null) LS.set('nc_insights', SEED_INSIGHTS);
@@ -295,6 +290,7 @@
           ${(m.tags && m.tags.length) ? `<div class="member-row__tags">${m.tags.map(t => `<span>${esc(t)}</span>`).join('')}</div>` : ''}
         </div>
         <div class="member-row__actions">
+          <button class="iconbtn" title="Edit profile" data-act="edit-member" data-id="${m.id}">${ICON.edit}</button>
           <label class="switch" title="${m.published ? 'Shown on website' : 'Hidden'}"><input type="checkbox" data-act="toggle-member" data-id="${m.id}" ${m.published ? 'checked' : ''}><span class="switch__track"></span></label>
           <button class="iconbtn iconbtn--danger" title="Remove" data-act="del-member" data-id="${m.id}">${ICON.trash}</button>
         </div>
@@ -302,17 +298,8 @@
 
     return `
       <div class="view__head">
-        <div><h2>Our Team</h2><p>${shown} of ${team.length} shown · these appear in the “Our Team” section of the website.</p></div>
-      </div>
-      <div class="panel" style="margin-bottom:18px">
-        <div class="panel__body">
-          <form id="teamAddForm" style="display:flex;flex-wrap:wrap;gap:.7rem;align-items:flex-end">
-            <div class="field" style="flex:1;min-width:170px;margin:0"><label for="tmName">Name</label><input id="tmName" type="text" placeholder="e.g. Aishath Ali" required></div>
-            <div class="field" style="flex:1;min-width:170px;margin:0"><label for="tmRole">Role / title</label><input id="tmRole" type="text" placeholder="e.g. Associate"></div>
-            <div class="field" style="flex:2;min-width:220px;margin:0"><label for="tmBio">Short bio</label><input id="tmBio" type="text" placeholder="One line about them"></div>
-            <button class="btn btn--gold" type="submit">${ICON.plus} Add</button>
-          </form>
-        </div>
+        <div><h2>Our Team</h2><p>${shown} of ${team.length} shown · click a member’s <b>edit</b> to customise their full profile. Profiles open when a visitor clicks them on the website.</p></div>
+        <button class="btn btn--gold" data-act="new-member">${ICON.plus} Add member</button>
       </div>
       <div class="panel">
         ${team.length ? `<div class="member-list">${cards}</div>` : emptyState(ICON.doc, 'No team members yet', 'Add your first team member to show them on the website.')}
@@ -376,6 +363,8 @@
       case 'del-area':
         if (confirm('Remove this practice area?')) { removeFrom('nc_areas', id); toast('Area removed'); route(current); }
         break;
+      case 'new-member': openMemberModal(null); break;
+      case 'edit-member': openMemberModal(id); break;
       case 'del-member':
         if (confirm('Remove this team member?')) { removeFrom('nc_team', id); toast('Member removed'); route(current); }
         break;
@@ -414,14 +403,6 @@
       const areas = LS.get('nc_areas', []); areas.push({ id: uid('a'), name, group, enabled: true }); LS.set('nc_areas', areas);
       toast('Practice area added'); route('areas');
     }
-    if (e.target.id === 'teamAddForm') {
-      e.preventDefault();
-      const name = $('#tmName').value.trim(); if (!name) return;
-      const team = LS.get('nc_team', []);
-      team.push({ id: uid('t'), name, role: $('#tmRole').value.trim(), bio: $('#tmBio').value.trim(), tags: [], published: true });
-      LS.set('nc_team', team);
-      toast('Team member added'); route('team');
-    }
     if (e.target.id === 'settingsForm') {
       e.preventDefault();
       LS.set('nc_settings', { phone: $('#sPhone').value.trim(), email: $('#sEmail').value.trim(), address: $('#sAddr').value.trim(), linkedin: $('#sLinked').value.trim() });
@@ -435,6 +416,8 @@
   /* ---------------- Insight modal ---------------- */
   const modal = $('#modal');
   let editingId = null;
+  let editingMemberId = null;
+  let onModalSave = null;
   function openInsightModal(id) {
     editingId = id;
     const post = id ? LS.get('nc_insights', []).find(p => p.id === id) : null;
@@ -454,15 +437,17 @@
         <label class="switch"><input type="checkbox" id="mPub" ${!post || post.published ? 'checked' : ''}><span class="switch__track"></span></label>
         <span style="font-weight:500;color:var(--navy-700)">Published (visible on website)</span>
       </div>`;
+    $('#modalSave').textContent = 'Save insight';
+    onModalSave = saveInsight;
     modal.classList.add('open');
   }
-  function closeModal() { modal.classList.remove('open'); editingId = null; }
+  function closeModal() { modal.classList.remove('open'); editingId = null; editingMemberId = null; onModalSave = null; }
   $('#modalClose').addEventListener('click', closeModal);
   $('#modalCancel').addEventListener('click', closeModal);
   $('#modalScrim').addEventListener('click', closeModal);
   document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeModal(); closeDrawer(); } });
 
-  $('#modalSave').addEventListener('click', () => {
+  function saveInsight() {
     const title = $('#mTitle').value.trim();
     if (!title) { $('#mTitle').focus(); toast('Please add a title'); return; }
     const data = {
@@ -485,7 +470,79 @@
     LS.set('nc_insights', posts);
     closeModal();
     route('insights');
-  });
+  }
+
+  /* ---------------- Team member modal (full profile) ---------------- */
+  function memberField(id, label, val, ph, type) {
+    return `<div class="field"><label for="${id}">${label}</label><input id="${id}" type="${type || 'text'}" value="${esc(val || '')}" placeholder="${esc(ph || '')}"></div>`;
+  }
+  function openMemberModal(id) {
+    editingMemberId = id;
+    const m = (id ? LS.get('nc_team', []).find(x => x.id === id) : null) || {};
+    $('#modalTitle').textContent = id ? 'Edit profile' : 'New team member';
+    $('#modalBody').innerHTML = `
+      <div class="field__row">
+        ${memberField('pmName', 'Full name', m.name, 'e.g. Aishath Ali')}
+        ${memberField('pmRole', 'Role / title', m.role, 'e.g. Senior Associate')}
+      </div>
+      <div class="field"><label for="pmBio">Short bio (team card)</label><textarea id="pmBio" placeholder="One or two lines shown on the card">${esc(m.bio || '')}</textarea></div>
+      <div class="field"><label for="pmAbout">Full profile / about</label><textarea id="pmAbout" style="min-height:130px" placeholder="Longer bio — leave a blank line between paragraphs.">${esc(m.about || '')}</textarea></div>
+      <div class="field__row">
+        ${memberField('pmLocation', 'Location', m.location, 'Malé, Maldives')}
+        ${memberField('pmSince', 'At the firm since', m.since, 'e.g. 2016')}
+      </div>
+      <div class="field"><label for="pmTags">Tags <span style="color:var(--muted);font-weight:400">— comma separated</span></label><input id="pmTags" type="text" value="${esc((m.tags || []).join(', '))}" placeholder="Corporate, Tourism"></div>
+      <div class="field"><label for="pmExpertise">Areas of focus <span style="color:var(--muted);font-weight:400">— one per line</span></label><textarea id="pmExpertise" placeholder="One area per line">${esc((m.expertise || []).join('\n'))}</textarea></div>
+      <div class="field"><label for="pmEducation">Education &amp; admissions <span style="color:var(--muted);font-weight:400">— one per line</span></label><textarea id="pmEducation" placeholder="One qualification per line">${esc((m.education || []).join('\n'))}</textarea></div>
+      ${memberField('pmLanguages', 'Languages — comma separated', (m.languages || []).join(', '), 'Dhivehi, English')}
+      <div class="field__row">
+        ${memberField('pmEmail', 'Email', m.email, 'name@nasheeds.co', 'email')}
+        ${memberField('pmPhone', 'Phone', m.phone, '+960 331 8558')}
+      </div>
+      ${memberField('pmLinkedin', 'LinkedIn URL', m.linkedin, 'https://linkedin.com/…', 'url')}
+      <div class="field" style="display:flex;align-items:center;gap:.7rem;margin:0">
+        <label class="switch"><input type="checkbox" id="pmPub" ${(!id || m.published) ? 'checked' : ''}><span class="switch__track"></span></label>
+        <span style="font-weight:500;color:var(--navy-700)">Shown on website</span>
+      </div>`;
+    $('#modalSave').textContent = id ? 'Save profile' : 'Add member';
+    onModalSave = saveMember;
+    modal.classList.add('open');
+  }
+  function saveMember() {
+    const name = $('#pmName').value.trim();
+    if (!name) { $('#pmName').focus(); toast('Please add a name'); return; }
+    const lines = (v) => v.split('\n').map(s => s.trim()).filter(Boolean);
+    const commas = (v) => v.split(',').map(s => s.trim()).filter(Boolean);
+    const data = {
+      name,
+      role: $('#pmRole').value.trim(),
+      bio: $('#pmBio').value.trim(),
+      about: $('#pmAbout').value.trim(),
+      location: $('#pmLocation').value.trim(),
+      since: $('#pmSince').value.trim(),
+      tags: commas($('#pmTags').value),
+      expertise: lines($('#pmExpertise').value),
+      education: lines($('#pmEducation').value),
+      languages: commas($('#pmLanguages').value),
+      email: $('#pmEmail').value.trim(),
+      phone: $('#pmPhone').value.trim(),
+      linkedin: $('#pmLinkedin').value.trim(),
+      published: $('#pmPub').checked
+    };
+    const team = LS.get('nc_team', []);
+    if (editingMemberId) {
+      const it = team.find(x => x.id === editingMemberId); if (it) Object.assign(it, data);
+      toast('Profile saved');
+    } else {
+      team.push(Object.assign({ id: uid('t') }, data));
+      toast('Team member added');
+    }
+    LS.set('nc_team', team);
+    closeModal();
+    route('team');
+  }
+
+  $('#modalSave').addEventListener('click', () => { if (typeof onModalSave === 'function') onModalSave(); });
 
   /* ---------------- Mobile drawer ---------------- */
   const sidebar = $('#sidebar'), scrim = $('#sideScrim');
