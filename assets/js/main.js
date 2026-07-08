@@ -72,14 +72,17 @@
     vis.forEach(m => { teamById[m.id] = m; });
     if (vis.length) {
       teamGrid.innerHTML = vis.map((m, i) => {
-        const tags = (m.tags || []).map(t => `<span>${esc(t)}</span>`).join('');
+        const idx = String(i + 1).padStart(2, '0');
         return `<a class="member reveal" href="?member=${encodeURIComponent(m.id)}" data-member="${esc(m.id)}"${i > 0 ? ` data-d="${Math.min(i, 3)}"` : ''}>
-          <div class="member__av">${esc(teamInitials(m.name))}</div>
-          <h3 class="member__name">${esc(m.name)}</h3>
-          <p class="member__role">${esc(m.role || '')}</p>
-          <p class="member__bio">${esc(m.bio || '')}</p>
-          ${tags ? `<div class="member__tags">${tags}</div>` : ''}
-          <span class="member__view">View profile ${arrowSvg}</span>
+          <div class="member__portrait">
+            <span class="member__index">${idx}</span>
+            <span class="member__mono">${esc(teamInitials(m.name))}</span>
+            <span class="member__cta">View profile ${arrowSvg}</span>
+          </div>
+          <div class="member__info">
+            <h3 class="member__name">${esc(m.name)}</h3>
+            <p class="member__role">${esc(m.role || '')}</p>
+          </div>
         </a>`;
       }).join('');
     }
