@@ -13,8 +13,8 @@
   <meta property="og:description" content="Trusted legal counsel for the businesses that power the Maldives. Corporate, commercial and litigation, since 1997." />
   <meta property="og:image" content="assets/img/banner.webp" />
 
-  <link rel="icon" type="image/webp" href="assets/img/logo-crest.webp" />
-  <link rel="apple-touch-icon" href="assets/img/logo-crest.webp" />
+  <link rel="icon" type="image/webp" href="assets/img/favicon.webp" />
+  <link rel="apple-touch-icon" href="assets/img/favicon.webp" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -96,11 +96,38 @@
             </div>
           </div>
 
-          <aside class="hero__card">
-            <p class="kicker">The Firm</p>
-            <img class="hero__logo" src="assets/img/logo-primary.webp" alt="Nasheed & Co — corporate & commercial lawyers" />
-            <p>Corporate&nbsp;· Commercial&nbsp;· Litigation<br/>A legal concierge for every client.</p>
-            <div class="hero__badge"><b>Est. 1997</b><span>Malé, Maldives</span></div>
+          <aside class="hero__pillar" aria-hidden="true">
+            <span class="hero__pillar-glow"></span>
+            <svg class="pillar" viewBox="0 0 280 700" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="pStone" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0" stop-color="#f4eeda"/><stop offset=".4" stop-color="#e7d7ab"/>
+                  <stop offset=".72" stop-color="#ceb37e"/><stop offset="1" stop-color="#ac8a4d"/>
+                </linearGradient>
+                <linearGradient id="pSlab" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0" stop-color="#f7f1de"/><stop offset=".5" stop-color="#ecddb3"/><stop offset="1" stop-color="#c0a067"/>
+                </linearGradient>
+              </defs>
+              <ellipse cx="140" cy="675" rx="122" ry="11" fill="#a9863f" opacity=".2"/>
+              <g stroke="#a9863f" stroke-width="2" stroke-linejoin="round">
+                <rect x="46" y="606" width="188" height="47" rx="3" fill="url(#pSlab)"/>
+                <rect x="63" y="586" width="154" height="11" rx="3" fill="url(#pStone)"/>
+                <rect x="54" y="581" width="172" height="27" rx="13" fill="url(#pStone)"/>
+                <path d="M80 132 Q75 360 73 579 L207 579 Q205 360 200 132 Z" fill="url(#pStone)"/>
+                <rect x="79" y="123" width="122" height="10" fill="url(#pSlab)"/>
+                <path d="M50 92 H230 L204 118 Q199 123 193 123 H87 Q81 123 76 118 Z" fill="url(#pStone)"/>
+                <rect x="48" y="68" width="184" height="25" rx="1" fill="url(#pSlab)"/>
+                <rect x="40" y="57" width="200" height="12" rx="2" fill="url(#pSlab)"/>
+              </g>
+              <g stroke="#9c7f45" stroke-width="1.4" stroke-linecap="round" opacity=".5">
+                <line x1="97" y1="141" x2="95" y2="569"/><line x1="115" y1="139" x2="114" y2="571"/>
+                <line x1="133" y1="138" x2="133" y2="572"/><line x1="147" y1="138" x2="147" y2="572"/>
+                <line x1="165" y1="139" x2="166" y2="571"/><line x1="183" y1="141" x2="185" y2="569"/>
+              </g>
+              <g stroke="#a9863f" stroke-width="1.2" opacity=".5"><path d="M84 114 H196"/><path d="M90 108 H190"/></g>
+              <line x1="101" y1="141" x2="99" y2="567" stroke="#fbf6e6" stroke-width="3" opacity=".35" stroke-linecap="round"/>
+              <text x="140" y="636" text-anchor="middle" font-family="'Libre Franklin', serif" font-size="16" letter-spacing="3" font-weight="600" fill="#8a6c32">MCMXCVII</text>
+            </svg>
           </aside>
         </div>
       </div>
@@ -337,7 +364,7 @@
           </article>
 
           <article class="sector reveal" data-d="1">
-            <div class="sector__img"><img src="assets/img/aviation.webp" alt="A floatplane at rest on the water" loading="lazy" /></div>
+            <div class="sector__img"><img src="assets/img/seaplane-mv.webp" alt="A Maldivian seaplane on the turquoise lagoon at a resort" loading="lazy" /></div>
             <div class="sector__body">
               <span class="sector__num">02</span>
               <h3>Aviation &amp; Airlines</h3>
@@ -347,7 +374,7 @@
           </article>
 
           <article class="sector reveal" data-d="2">
-            <div class="sector__img"><img src="assets/img/office.webp" alt="United States one hundred dollar notes" loading="lazy" /></div>
+            <div class="sector__img"><img src="assets/img/male-city.webp" alt="The Malé city skyline at dusk over the water — the Maldives' commercial capital" loading="lazy" /></div>
             <div class="sector__body">
               <span class="sector__num">03</span>
               <h3>Banking, Finance &amp; Corporates</h3>
@@ -430,9 +457,9 @@
 
         <div class="team__grid" id="teamGrid">
           <a class="member reveal" href="member.html?id=t1">
-            <div class="member__portrait">
+            <div class="member__portrait has-photo">
+              <img class="member__photo" src="assets/img/team-t1.webp" alt="Ahmed Nasheed" loading="lazy" />
               <span class="member__index">01</span>
-              <span class="member__mono">AN</span>
               <span class="member__cta">View profile <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
             </div>
             <div class="member__info">
@@ -441,9 +468,9 @@
             </div>
           </a>
           <a class="member reveal" href="member.html?id=t2" data-d="1">
-            <div class="member__portrait">
+            <div class="member__portrait has-photo">
+              <img class="member__photo" src="assets/img/team-t2.webp" alt="Aishath Rasheedha" loading="lazy" />
               <span class="member__index">02</span>
-              <span class="member__mono">AR</span>
               <span class="member__cta">View profile <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
             </div>
             <div class="member__info">
@@ -452,9 +479,9 @@
             </div>
           </a>
           <a class="member reveal" href="member.html?id=t3" data-d="2">
-            <div class="member__portrait">
+            <div class="member__portrait has-photo">
+              <img class="member__photo" src="assets/img/team-t3.webp" alt="Ibrahim Waheed" loading="lazy" />
               <span class="member__index">03</span>
-              <span class="member__mono">IW</span>
               <span class="member__cta">View profile <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
             </div>
             <div class="member__info">
@@ -463,9 +490,9 @@
             </div>
           </a>
           <a class="member reveal" href="member.html?id=t4" data-d="3">
-            <div class="member__portrait">
+            <div class="member__portrait has-photo">
+              <img class="member__photo" src="assets/img/team-t4.webp" alt="Fathimath Zahaa" loading="lazy" />
               <span class="member__index">04</span>
-              <span class="member__mono">FZ</span>
               <span class="member__cta">View profile <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
             </div>
             <div class="member__info">

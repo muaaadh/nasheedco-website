@@ -60,10 +60,13 @@
     if (vis.length) {
       teamGrid.innerHTML = vis.map((m, i) => {
         const idx = String(i + 1).padStart(2, '0');
+        const face = m.photo
+          ? `<img class="member__photo" src="${esc(m.photo)}" alt="${esc(m.name)}" loading="lazy" />`
+          : `<span class="member__mono">${esc(teamInitials(m.name))}</span>`;
         return `<a class="member reveal" href="member.html?id=${encodeURIComponent(m.id)}"${i > 0 ? ` data-d="${Math.min(i, 3)}"` : ''}>
-          <div class="member__portrait">
+          <div class="member__portrait${m.photo ? ' has-photo' : ''}">
+            ${face}
             <span class="member__index">${idx}</span>
-            <span class="member__mono">${esc(teamInitials(m.name))}</span>
             <span class="member__cta">View profile ${arrowSvg}</span>
           </div>
           <div class="member__info">

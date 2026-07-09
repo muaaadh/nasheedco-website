@@ -280,35 +280,21 @@ ul{ margin:0; padding:0; list-style:none; }
 .hero__meta b{ display:block; font-family:var(--serif); font-size:1.5rem; color:#fff; font-weight:500; }
 
 /* Hero crest card */
-.hero__card{
-  position:relative; border-radius:var(--r-lg);
-  background:linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.03));
-  border:1px solid var(--line-light);
-  padding:clamp(28px,4vw,44px); text-align:center;
-  padding-bottom:clamp(60px,7vw,72px); /* clearance so the Est. badge never overlaps the text */
-  box-shadow:var(--shadow-lg);
-  backdrop-filter:blur(4px);
+/* Hero — Roman column ("pillar of law") */
+.hero__pillar{ position:relative; display:grid; place-items:center; min-width:0; }
+.hero__pillar-glow{
+  position:absolute; z-index:0; width:84%; height:80%; left:50%; top:53%; transform:translate(-50%,-50%);
+  background:radial-gradient(closest-side, rgba(194,161,94,.30), rgba(194,161,94,0) 72%);
+  pointer-events:none;
 }
-.hero__card::before{
-  content:""; position:absolute; inset:12px; border:1px solid rgba(194,161,94,.35); border-radius:calc(var(--r-lg) - 8px); pointer-events:none;
+.pillar{
+  position:relative; z-index:1; width:auto; height:clamp(360px,42vw,556px);
+  filter:drop-shadow(0 28px 42px rgba(6,17,30,.55));
 }
-.hero__logo{ width:min(268px,82%); height:auto; margin:.5rem auto 1.15rem; filter:brightness(0) invert(1); }
-.hero__card p{ color:rgba(255,255,255,.72); font-size:.95rem; }
-.hero__card .kicker{ font-family:var(--sans); font-size:.68rem; letter-spacing:.3em; text-transform:uppercase; color:var(--gold-soft); }
-.hero__badge{
-  position:absolute; right:-14px; bottom:-14px;
-  background:linear-gradient(180deg, #bd9548 0%, #9a7730 100%); color:#fff;
-  border-radius:14px; padding:.7rem 1rem; text-align:left;
-  box-shadow:var(--shadow-md); line-height:1.1;
-  text-shadow:0 1px 1px rgba(60,44,10,.35);
-}
-.hero__badge b{ display:block; font-family:var(--serif); font-size:1.35rem; font-weight:600; color:#fff; }
-.hero__badge span{ font-size:.66rem; letter-spacing:.14em; text-transform:uppercase; font-weight:600; color:rgba(255,255,255,.85); }
 
 @media (max-width:860px){
   .hero__grid{ grid-template-columns:1fr; }
-  .hero__card{ order:-1; max-width:420px; margin-inline:auto; width:100%; }
-  .hero__badge{ right:10px; bottom:-12px; }
+  .hero__pillar{ display:none; }
 }
 
 /* =========================================================
@@ -521,10 +507,22 @@ ul{ margin:0; padding:0; list-style:none; }
   transition:transform .5s var(--ease);
 }
 .member:hover .member__mono{ transform:scale(1.07); }
+/* photo fill */
+.member__photo{
+  position:absolute; inset:0; z-index:0; width:100%; height:100%;
+  object-fit:cover; object-position:center 22%;
+  transition:transform .6s var(--ease), filter .45s var(--ease);
+}
+.member:hover .member__photo{ transform:scale(1.05); }
+/* darken toward the top so the index stays legible over any photo */
+.member__portrait.has-photo::after{
+  right:auto; bottom:auto; inset:0; width:100%; height:52%; z-index:1; border:0; border-radius:0; transform:none;
+  background:linear-gradient(to bottom, rgba(9,24,41,.5), transparent);
+}
 .member__index{
   position:absolute; top:13px; left:15px; z-index:3;
   font-family:var(--sans); font-size:.7rem; font-weight:700; letter-spacing:.18em;
-  color:rgba(226,205,157,.55);
+  color:rgba(226,205,157,.72); text-shadow:0 1px 6px rgba(8,22,38,.55);
 }
 .member__cta{
   position:absolute; left:0; right:0; bottom:0; z-index:3;
@@ -565,9 +563,10 @@ ul{ margin:0; padding:0; list-style:none; }
 
 .profile__badge{ display:inline-block; font-size:.66rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--gold-deep); margin-bottom:1.1rem; }
 .profile__head{ display:flex; align-items:center; gap:1.1rem; }
-.profile__av{ width:104px; height:104px; border-radius:20px; flex-shrink:0; display:grid; place-items:center;
+.profile__av{ width:104px; height:104px; border-radius:20px; flex-shrink:0; overflow:hidden; display:grid; place-items:center;
   font-family:var(--serif); font-weight:600; font-size:2.2rem; letter-spacing:.02em; color:var(--gold-soft);
   background:linear-gradient(155deg, var(--navy-600), var(--navy-900)); box-shadow:inset 0 0 0 1px rgba(194,161,94,.5), 0 16px 32px -16px rgba(10,29,49,.5); }
+.profile__av img{ width:100%; height:100%; object-fit:cover; object-position:center 22%; display:block; }
 .profile__role{ font-size:.74rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--gold-deep); }
 .profile__name{ font-size:clamp(1.5rem,3vw,2rem); color:var(--navy); margin-top:.15rem; }
 .profile__meta{ display:flex; flex-wrap:wrap; gap:.4rem 1.1rem; margin-top:.6rem; font-size:.82rem; color:var(--muted); }

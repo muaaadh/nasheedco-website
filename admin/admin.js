@@ -277,12 +277,14 @@
   function teamInitials(name) {
     return (String(name || '').trim().split(/\s+/).map(w => w[0] || '').slice(0, 2).join('') || '—').toUpperCase();
   }
+  /* photos are stored root-relative (for the public site); the admin lives in /admin, so prefix ../ */
+  function adminPhoto(p) { return !p ? '' : (/^(https?:|data:|\/|\.\.\/)/.test(p) ? p : '../' + p); }
   function renderTeam() {
     const team = LS.get('nc_team', []);
     const shown = team.filter(m => m.published).length;
     const cards = team.map(m => `
       <div class="member-row ${m.published ? '' : 'off'}">
-        <div class="member-row__av">${esc(teamInitials(m.name))}</div>
+        <div class="member-row__av${m.photo ? ' has-photo' : ''}">${m.photo ? `<img src="${esc(adminPhoto(m.photo))}" alt="${esc(m.name)}">` : esc(teamInitials(m.name))}</div>
         <div class="member-row__main">
           <div class="member-row__name">${esc(m.name)}</div>
           <div class="member-row__role">${esc(m.role || '')}</div>
@@ -485,6 +487,7 @@
         ${memberField('pmName', 'Full name', m.name, 'e.g. Aishath Ali')}
         ${memberField('pmRole', 'Role / title', m.role, 'e.g. Senior Associate')}
       </div>
+      ${memberField('pmPhoto', 'Photo URL <span style="color:var(--muted);font-weight:400">— square image works best</span>', m.photo, 'assets/img/team-xx.webp')}
       <div class="field"><label for="pmBio">Short bio (team card)</label><textarea id="pmBio" placeholder="One or two lines shown on the card">${esc(m.bio || '')}</textarea></div>
       <div class="field"><label for="pmAbout">Full profile / about</label><textarea id="pmAbout" style="min-height:130px" placeholder="Longer bio — leave a blank line between paragraphs.">${esc(m.about || '')}</textarea></div>
       <div class="field__row">
@@ -515,6 +518,7 @@
     const commas = (v) => v.split(',').map(s => s.trim()).filter(Boolean);
     const data = {
       name,
+      photo: $('#pmPhoto').value.trim(),
       role: $('#pmRole').value.trim(),
       bio: $('#pmBio').value.trim(),
       about: $('#pmAbout').value.trim(),

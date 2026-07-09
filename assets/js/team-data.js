@@ -8,6 +8,7 @@
 window.NC_TEAM_SEED = [
   {
     id: 't1',
+    photo: 'assets/img/team-t1.webp',
     name: 'Ahmed Nasheed',
     role: 'Managing Partner',
     bio: 'Founded the firm in 1997. Leads on corporate structuring, foreign investment and resort development for some of the Maldives’ largest enterprises.',
@@ -25,6 +26,7 @@ window.NC_TEAM_SEED = [
   },
   {
     id: 't2',
+    photo: 'assets/img/team-t2.webp',
     name: 'Aishath Rasheedha',
     role: 'Senior Associate · Corporate & Commercial',
     bio: 'Advises banks, insurers and telecoms on financing, regulatory compliance and high-value commercial contracts and acquisitions.',
@@ -42,6 +44,7 @@ window.NC_TEAM_SEED = [
   },
   {
     id: 't3',
+    photo: 'assets/img/team-t3.webp',
     name: 'Ibrahim Waheed',
     role: 'Head of Litigation & Disputes',
     bio: 'Represents clients in contractual, employment and property disputes before the civil courts and in arbitration.',
@@ -59,6 +62,7 @@ window.NC_TEAM_SEED = [
   },
   {
     id: 't4',
+    photo: 'assets/img/team-t4.webp',
     name: 'Fathimath Zahaa',
     role: 'Associate · Regulatory & Employment',
     bio: 'Focuses on employment matters, GST/TGST and sector regulation for the firm’s aviation and hospitality clients.',

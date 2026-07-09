@@ -62,7 +62,7 @@
   card.innerHTML = `
     <span class="profile__badge">Nasheed &amp; Co · Our team</span>
     <div class="profile__head">
-      <div class="profile__av">${esc(initials(m.name))}</div>
+      <div class="profile__av${m.photo ? ' has-photo' : ''}">${m.photo ? `<img src="${esc(m.photo)}" alt="${esc(m.name)}" />` : esc(initials(m.name))}</div>
       <div class="profile__id">
         <p class="profile__role">${esc(m.role || '')}</p>
         <h1 class="profile__name">${esc(m.name)}</h1>
