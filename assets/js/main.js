@@ -52,7 +52,7 @@
 
   /* ---- Team: render cards linking to each member's profile page ---- */
   const teamGrid = $('#teamGrid');
-  const teamData = LS.get('nc_team', null) || window.NC_TEAM_SEED || [];
+  const teamData = (typeof window.NC_getTeam === 'function') ? window.NC_getTeam() : (LS.get('nc_team', null) || window.NC_TEAM_SEED || []);
   const teamInitials = (name) => (String(name || '').trim().split(/\s+/).map(w => w[0] || '').slice(0, 2).join('') || '—').toUpperCase();
   const arrowSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
   if (teamGrid && Array.isArray(teamData)) {

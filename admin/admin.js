@@ -62,6 +62,14 @@
     if (LS.get('nc_settings', null) == null) LS.set('nc_settings', SEED_SETTINGS);
     if (LS.get('nc_team', null) == null) LS.set('nc_team', SEED_TEAM);
     if (LS.get('nc_enquiries', null) == null) LS.set('nc_enquiries', []);
+    // back-fill photos into team data saved before the photo field existed
+    const team = LS.get('nc_team', null);
+    if (Array.isArray(team)) {
+      const byId = {}; SEED_TEAM.forEach(s => { if (s && s.id) byId[s.id] = s; });
+      let changed = false;
+      team.forEach(m => { if (m && !m.photo && byId[m.id] && byId[m.id].photo) { m.photo = byId[m.id].photo; changed = true; } });
+      if (changed) LS.set('nc_team', team);
+    }
   }
 
   /* ---------------- Toast ---------------- */

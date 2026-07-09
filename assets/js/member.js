@@ -27,7 +27,7 @@
   if (!card) return;
 
   const id = new URLSearchParams(location.search).get('id');
-  const team = LS.get('nc_team', null) || window.NC_TEAM_SEED || [];
+  const team = (typeof window.NC_getTeam === 'function') ? window.NC_getTeam() : (LS.get('nc_team', null) || window.NC_TEAM_SEED || []);
   const m = team.find(x => x && x.id === id);
 
   if (!m) {

@@ -5,6 +5,25 @@
    localStorage ("nc_team"); this array is the default that
    ships with the site for first-time / logged-out visitors.
    ========================================================= */
+/* Returns the team to display: admin-saved data if present, otherwise the seed.
+   Back-fills the `photo` (and other newly-added fields) from the seed by id, so
+   data saved before a field existed still shows it. Non-destructive. */
+window.NC_getTeam = function () {
+  var seed = window.NC_TEAM_SEED || [];
+  var stored = null;
+  try { stored = JSON.parse(localStorage.getItem('nc_team')); } catch (e) { stored = null; }
+  if (!Array.isArray(stored)) return seed;
+  var byId = {};
+  seed.forEach(function (s) { if (s && s.id) byId[s.id] = s; });
+  return stored.map(function (m) {
+    if (!m || !byId[m.id]) return m;
+    if (!m.photo && byId[m.id].photo) {
+      var c = {}; for (var k in m) c[k] = m[k]; c.photo = byId[m.id].photo; return c;
+    }
+    return m;
+  });
+};
+
 window.NC_TEAM_SEED = [
   {
     id: 't1',
