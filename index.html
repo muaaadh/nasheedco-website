@@ -4,13 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nasheed &amp; Co — Corporate &amp; Commercial Law, Maldives</title>
-  <meta name="description" content="Nasheed & Co is a Malé-based corporate and commercial law firm advising the Maldives' leading resorts, airlines, banks and enterprises since 1997. A legal concierge for your business." />
-  <meta name="theme-color" content="#0a1d31" />
+  <meta name="description" content="Nasheed & Co is a Malé-based corporate and commercial law firm. Read our latest legal insights and updates, and explore our practice areas — corporate, commercial and litigation, since 1997." />
+  <meta name="theme-color" content="#15294a" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Nasheed & Co — Corporate & Commercial Law, Maldives" />
-  <meta property="og:description" content="Trusted legal counsel for the businesses that power the Maldives. Corporate, commercial and litigation, since 1997." />
+  <meta property="og:description" content="Legal insights and trusted counsel for the businesses that power the Maldives. Corporate, commercial and litigation, since 1997." />
   <meta property="og:image" content="assets/img/banner.webp" />
 
   <link rel="icon" type="image/webp" href="assets/img/favicon.webp" />
@@ -53,20 +53,31 @@
       </a>
 
       <nav class="nav__links" id="navLinks" aria-label="Primary">
-        <a href="#about">About</a>
-        <a href="#expertise">Expertise</a>
-        <a href="#concierge">Concierge</a>
-        <a href="#sectors">Sectors</a>
-        <a href="#insights">Insights</a>
-        <a href="#team">Team</a>
-        <a href="#contact">Contact</a>
-        <a class="btn btn--gold btn--sm nav__cta-mobile" href="#contact">Book a consultation</a>
+        <a href="#home">Home</a>
+        <a href="#about">About Us</a>
+        <a href="#practice">Practice Areas</a>
+        <a href="#resources">Resources</a>
+        <a href="#faqs">FAQs</a>
+        <a href="#contact">Contact Us</a>
+        <a class="btn btn--gold btn--sm nav__cta-mobile" href="#contact">Contact</a>
       </nav>
 
       <div class="nav__actions">
-        <a class="btn btn--gold btn--sm nav__cta-desktop" href="#contact">Book a consultation</a>
+        <button class="nav__search" id="navSearch" aria-label="Search the site" aria-expanded="false" aria-controls="searchBar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        </button>
+        <a class="btn btn--gold btn--sm nav__cta-desktop" href="#contact">Contact</a>
         <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
           <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="nav__search-bar" id="searchBar" hidden>
+      <div class="wrap nav__search-inner">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <input type="search" id="searchInput" placeholder="Search practice areas, insights, resources…" aria-label="Search the site" />
+        <button class="nav__search-close" id="searchClose" aria-label="Close search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
         </button>
       </div>
     </div>
@@ -74,374 +85,137 @@
   </header>
 
   <main id="main">
-    <!-- ================= Hero ================= -->
-    <section class="hero">
-      <div class="hero__bg"><img src="assets/img/banner.webp" alt="" aria-hidden="true" /></div>
-      <div class="wrap hero__inner">
-        <div class="hero__grid">
-          <div class="hero__content">
-            <span class="eyebrow eyebrow--light">Corporate &amp; Commercial Law · Maldives</span>
-            <h1 class="hero__title">Legal counsel the Maldives’ <em>leading businesses</em> rely on.</h1>
-            <p class="hero__lead">Nasheed &amp; Co is a Malé-based corporate and commercial law firm. Since 1997 we have acted as a legal concierge to resorts, airlines, banks and enterprises — anticipating risk, protecting every contract, and freeing you to grow.</p>
-            <div class="hero__cta">
-              <a class="btn btn--gold" href="#contact">Book a consultation
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-              </a>
-              <a class="btn btn--on-navy" href="#concierge">Find your counsel</a>
-            </div>
-            <div class="hero__meta">
-              <div><b>1997</b>Established</div>
-              <div><b>18</b>Practice areas</div>
-              <div><b>Malé</b>Republic of Maldives</div>
-            </div>
-          </div>
+    <!-- ================= Featured / blog-first ================= -->
+    <section class="section feature" id="home">
+      <div class="wrap">
+        <div class="feature__grid">
+          <!-- Featured (latest) post -->
+          <article class="feature__main reveal">
+            <span class="feature__label">Featured — our latest published article</span>
+            <a class="feature__card" href="https://www.nasheeds.co/blog/lease-extension-development-under-the-15th-amendment-to-the-tourism-act" target="_blank" rel="noopener">
+              <div class="feature__media">
+                <span class="feature__cat">Tourism</span>
+                <img src="assets/img/img-4610.webp" alt="Maldivian resort water villas over a turquoise lagoon" />
+              </div>
+              <div class="feature__body">
+                <h1 class="feature__title">Lease Extension: Development under the 15th Amendment to the Tourism Act</h1>
+                <p class="feature__excerpt">Collective bargaining and long-awaited reform are reshaping Maldivian business law. We break down what the 15th Amendment means for island lease extensions and resort development — the key provisions, obligations and timelines, in plain terms.</p>
+                <div class="feature__foot">
+                  <span class="feature__meta">26 May 2025 · 5 min read</span>
+                  <span class="textlink">Read the full article
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                  </span>
+                </div>
+              </div>
+            </a>
+          </article>
 
-          <aside class="hero__pillar" aria-hidden="true">
-            <span class="hero__pillar-glow"></span>
-            <svg class="pillar" viewBox="0 0 280 700" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="pStone" x1="0" y1="0" x2="1" y2="0">
-                  <stop offset="0" stop-color="#f4eeda"/><stop offset=".4" stop-color="#e7d7ab"/>
-                  <stop offset=".72" stop-color="#ceb37e"/><stop offset="1" stop-color="#ac8a4d"/>
-                </linearGradient>
-                <linearGradient id="pSlab" x1="0" y1="0" x2="1" y2="0">
-                  <stop offset="0" stop-color="#f7f1de"/><stop offset=".5" stop-color="#ecddb3"/><stop offset="1" stop-color="#c0a067"/>
-                </linearGradient>
-              </defs>
-              <ellipse cx="140" cy="675" rx="122" ry="11" fill="#a9863f" opacity=".2"/>
-              <g stroke="#a9863f" stroke-width="2" stroke-linejoin="round">
-                <rect x="46" y="606" width="188" height="47" rx="3" fill="url(#pSlab)"/>
-                <rect x="63" y="586" width="154" height="11" rx="3" fill="url(#pStone)"/>
-                <rect x="54" y="581" width="172" height="27" rx="13" fill="url(#pStone)"/>
-                <path d="M80 132 Q75 360 73 579 L207 579 Q205 360 200 132 Z" fill="url(#pStone)"/>
-                <rect x="79" y="123" width="122" height="10" fill="url(#pSlab)"/>
-                <path d="M50 92 H230 L204 118 Q199 123 193 123 H87 Q81 123 76 118 Z" fill="url(#pStone)"/>
-                <rect x="48" y="68" width="184" height="25" rx="1" fill="url(#pSlab)"/>
-                <rect x="40" y="57" width="200" height="12" rx="2" fill="url(#pSlab)"/>
-              </g>
-              <g stroke="#9c7f45" stroke-width="1.4" stroke-linecap="round" opacity=".5">
-                <line x1="97" y1="141" x2="95" y2="569"/><line x1="115" y1="139" x2="114" y2="571"/>
-                <line x1="133" y1="138" x2="133" y2="572"/><line x1="147" y1="138" x2="147" y2="572"/>
-                <line x1="165" y1="139" x2="166" y2="571"/><line x1="183" y1="141" x2="185" y2="569"/>
-              </g>
-              <g stroke="#a9863f" stroke-width="1.2" opacity=".5"><path d="M84 114 H196"/><path d="M90 108 H190"/></g>
-              <line x1="101" y1="141" x2="99" y2="567" stroke="#fbf6e6" stroke-width="3" opacity=".35" stroke-linecap="round"/>
-              <text x="140" y="636" text-anchor="middle" font-family="'Libre Franklin', serif" font-size="16" letter-spacing="3" font-weight="600" fill="#8a6c32">MCMXCVII</text>
-            </svg>
+          <!-- Recent + Latest sidebar -->
+          <aside class="feed reveal" data-d="1" aria-label="Recent and latest posts">
+            <h2 class="feed__h">Recent</h2>
+            <a class="feed__card" href="https://www.nasheeds.co/blog/new-forex-bill-in-the-maldives-what-businesses-need-to-know" target="_blank" rel="noopener">
+              <span class="feed__cat">Forex</span>
+              <span class="feed__title">New Forex Bill in the Maldives: What Businesses Need to Know</span>
+              <span class="feed__date">3 December 2024</span>
+            </a>
+            <a class="feed__card" href="https://www.nasheeds.co/news/maldives-to-enforce-new-seaplane-platform-licensing-regulation" target="_blank" rel="noopener">
+              <span class="feed__cat">Regulation</span>
+              <span class="feed__title">Maldives to Enforce New Seaplane Platform Licensing Regulation</span>
+              <span class="feed__date">27 January 2025</span>
+            </a>
+            <a class="feed__card" href="https://www.nasheeds.co/blog" target="_blank" rel="noopener">
+              <span class="feed__cat">Employment</span>
+              <span class="feed__title">Collective bargaining is in the offing</span>
+              <span class="feed__date">22 March 2023</span>
+            </a>
+
+            <h2 class="feed__h feed__h--latest">Latest updates</h2>
+            <ul class="newslist">
+              <li><a href="https://www.nasheeds.co/news" target="_blank" rel="noopener"><span>Proposal to remove speaker underway</span><em>2 Jul 2025</em></a></li>
+              <li><a href="https://www.nasheeds.co/news" target="_blank" rel="noopener"><span>Aslam likely to be next speaker</span><em>4 Jul 2025</em></a></li>
+              <li><a href="https://www.nasheeds.co/news" target="_blank" rel="noopener"><span>ACC freezes Villa sale</span><em>28 Jun 2025</em></a></li>
+            </ul>
+
+            <a class="feed__all textlink" href="#resources">All insights &amp; updates
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
           </aside>
         </div>
       </div>
     </section>
 
-    <!-- ================= Credibility bar (sliding marquee) ================= -->
-    <section class="credbar" aria-label="Sectors we serve">
-      <div class="wrap credbar__inner">
-        <span class="credbar__label">Trusted across</span>
-        <div class="credbar__marquee">
-          <div class="credbar__track">
-            <ul class="credbar__group">
-              <li>Resorts &amp; Hospitality</li>
-              <li>Aviation</li>
-              <li>Banking &amp; Finance</li>
-              <li>Telecom</li>
-              <li>Insurance</li>
-              <li>Corporates</li>
-            </ul>
-            <ul class="credbar__group" aria-hidden="true">
-              <li>Resorts &amp; Hospitality</li>
-              <li>Aviation</li>
-              <li>Banking &amp; Finance</li>
-              <li>Telecom</li>
-              <li>Insurance</li>
-              <li>Corporates</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= Trust strip ================= -->
-    <section class="strip" aria-label="At a glance">
-      <div class="wrap">
-        <div class="strip__inner">
-          <div class="stat reveal"><b>1997</b><span>Established</span></div>
-          <div class="stat reveal" data-d="1"><b>18</b><span>Practice areas</span></div>
-          <div class="stat reveal" data-d="2"><b>5+</b><span>Industries served</span></div>
-          <div class="stat reveal" data-d="3"><b>1:1</b><span>Named partner</span></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= About ================= -->
+    <!-- ================= About — Who / What / Where ================= -->
     <section class="section about" id="about">
-      <div class="wrap about__grid">
-        <div class="about__col-media reveal">
-          <figure class="about__figure">
-            <img src="assets/img/untitled-38.webp" alt="A Maldivian government gazette document" loading="lazy" />
-            <figcaption class="about__figcap">
-              <b>Rooted in Maldivian law</b>
-              <span>Corporate &amp; commercial counsel since 1997</span>
-            </figcaption>
-          </figure>
-          <div class="about__quote">
-            Your business deserves counsel who understands your industry as well as your lawyers.
-            <span>— The Nasheed &amp; Co approach</span>
+      <div class="wrap">
+        <div class="section__head section__head--center reveal">
+          <span class="eyebrow"><span class="eyebrow__no">01</span>About us</span>
+          <h2 class="section__title">A client-centric legal concierge, since 1997.</h2>
+          <p class="section__intro">Nasheed &amp; Co is a leading Maldivian law firm — a team of young, vibrant lawyers led by an experienced hand, delivering efficient, convenient and responsive service across the full spectrum of corporate and commercial law.</p>
+        </div>
+
+        <div class="wwww wwww--3">
+          <div class="wwww__item reveal">
+            <div class="wwww__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+            <h3>Who we are</h3>
+            <p>Lawyers specialising in corporate and commercial law. We act as a legal concierge — empathising with the client, understanding the pain points, and working alongside you to reach tailored solutions.</p>
+          </div>
+          <div class="wwww__item reveal" data-d="1">
+            <div class="wwww__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v5h5"/><path d="M9 13h6M9 17h4"/></svg></div>
+            <h3>What we do</h3>
+            <p>We provide corporate and commercial law advice and support, guided by our core values. We are driven to deliver — honest and transparent, patient and helpful, respectful and fair.</p>
+          </div>
+          <div class="wwww__item reveal" data-d="2">
+            <div class="wwww__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <h3>Where we are</h3>
+            <p>In Malé, right behind the south wall of the Maldives Parliament House. Can’t make it in? In-person and remote consultations are both available — just call or email.</p>
           </div>
         </div>
 
-        <div class="about__col-body reveal" data-d="1">
-          <div class="section__head" style="margin-bottom:1.2rem">
-            <span class="eyebrow"><span class="eyebrow__no">01</span>About the firm</span>
-            <h2 class="section__title">A client-centric legal concierge.</h2>
-            <p class="section__intro">Established in 1997, Nasheed &amp; Co is a leading Maldivian law firm — a team of young, vibrant lawyers led by an experienced hand, delivering efficient, convenient and responsive service across the full spectrum of corporate and commercial law.</p>
-          </div>
-
-          <div class="wwww">
-            <div class="wwww__item">
-              <div class="wwww__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-              <div><h3>Who we are</h3><p>Lawyers specialising in corporate and commercial law. We act as a legal concierge — empathising with the client, understanding the pain points, and working alongside you to reach tailored solutions.</p></div>
-            </div>
-            <div class="wwww__item">
-              <div class="wwww__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v5h5"/><path d="M9 13h6M9 17h4"/></svg></div>
-              <div><h3>What we do</h3><p>We provide corporate and commercial law advice and support, guided by our core values. We are driven to deliver — honest and transparent, patient and helpful, respectful and fair.</p></div>
-            </div>
-            <div class="wwww__item">
-              <div class="wwww__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
-              <div><h3>Where we are</h3><p>In Malé, right behind the south wall of the Maldives Parliament House. Can’t make it in? In-person and remote consultations are both available — just call or email.</p></div>
-            </div>
-          </div>
-
-          <div class="values" aria-label="Our values">
-            <span class="value"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Honest &amp; Transparent</span>
-            <span class="value"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Aware of your pain points</span>
-            <span class="value"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Respectful &amp; Fair</span>
-            <span class="value"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Patient &amp; Helpful</span>
-            <span class="value"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Driven to Deliver</span>
-          </div>
+        <div class="values" aria-label="Our values">
+          <span class="value"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Honest &amp; Transparent</span>
+          <span class="value"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Aware of your pain points</span>
+          <span class="value"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Respectful &amp; Fair</span>
+          <span class="value"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Patient &amp; Helpful</span>
+          <span class="value"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Driven to Deliver</span>
         </div>
       </div>
     </section>
 
-    <!-- ================= Expertise ================= -->
-    <section class="section exp" id="expertise">
+    <!-- ================= Practice Areas ================= -->
+    <section class="section pa" id="practice">
       <div class="wrap">
         <div class="section__head section__head--center reveal">
           <span class="eyebrow"><span class="eyebrow__no">02</span>Practice areas</span>
-          <h2 class="section__title">Full-service commercial legal support.</h2>
-          <p class="section__intro">Engagements are scoped to your needs — a single transaction handled, or an ongoing retained relationship across every area below.</p>
+          <h2 class="section__title">How we can help.</h2>
+          <p class="section__intro">Two divisions, one accountable team. Select a division to see the areas we cover — engagements are scoped to your needs, from a single transaction to ongoing retained counsel.</p>
         </div>
 
-        <div class="exp__groups">
-          <div class="exp__group reveal">
-            <h3><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="var(--gold-deep)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="20" x="4" y="2" rx="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01M12 6h.01M16 6h.01M8 10h.01M12 10h.01M16 10h.01"/></svg>Corporate &amp; Commercial <span class="tag">9 areas</span></h3>
-            <div class="area-grid">
-              <div class="area"><span class="area__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="20" x="4" y="2" rx="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01M12 6h.01M16 6h.01M8 10h.01M12 10h.01M16 10h.01"/></svg></span><b>Corporate Law</b></div>
-              <div class="area"><span class="area__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg></span><b>Foreign Investment</b></div>
-              <div class="area"><span class="area__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/></svg></span><b>Hotels, Resorts &amp; Tourism</b></div>
-              <div class="area"><span class="area__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg></span><b>Banking &amp; Finance</b></div>
-              <div class="area"><span class="area__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="8" x="2" y="2" rx="2"/><rect width="8" height="8" x="14" y="14" rx="2"/><path d="M14 6h4a2 2 0 0 1 2 2v4"/><path d="M10 18H6a2 2 0 0 1-2-2v-4"/></svg></span><b>Mergers &amp; Acquisitions</b></div>
-              <div class="area"><span class="area__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v5h5"/><path d="M9 13h6M9 17h4"/></svg></span><b>General Commercial</b></div>
-              <div class="area"><span class="area__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><b>Employment &amp; Labour</b></div>
-              <div class="area"><span class="area__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg></span><b>Insurance</b></div>
-              <div class="area"><span class="area__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="19" x2="5" y1="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg></span><b>Tax (GST / TGST)</b></div>
-            </div>
-          </div>
+        <div class="pa__tabs" role="tablist" aria-label="Practice divisions">
+          <button class="pa__tab is-active" id="tab-corporate" role="tab" aria-selected="true" aria-controls="panel-corporate" data-tab="corporate">Corporate</button>
+          <button class="pa__tab" id="tab-litigation" role="tab" aria-selected="false" aria-controls="panel-litigation" data-tab="litigation">Litigation</button>
+        </div>
 
-          <div class="exp__group reveal" data-d="1">
-            <h3><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="var(--gold-deep)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m16 16 3-8 3 8c-2 1.5-4 1.5-6 0"/><path d="m2 16 3-8 3 8c-2 1.5-4 1.5-6 0"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg>Litigation &amp; Disputes <span class="tag">9 areas</span></h3>
-            <div class="area-grid">
-              <div class="area"><span class="area__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m14.5 12.5-8 8a2.12 2.12 0 1 1-3-3l8-8"/><path d="m16 16 6-6"/><path d="m8 8 6-6"/><path d="m9 7 8 8"/><path d="m21 11-8-8"/></svg></span><b>Employment Matters</b></div>
-              <div class="area"><span class="area__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/><path d="M18.09 10.37A6 6 0 1 1 10.34 18"/><path d="M7 6h1v4"/><path d="m16.71 13.88.7.71-2.82 2.82"/></svg></span><b>Debt Recovery &amp; Collection</b></div>
-              <div class="area"><span class="area__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27"/></svg></span><b>Injury &amp; Compensation</b></div>
-              <div class="area"><span class="area__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span><b>Family Matters</b></div>
-              <div class="area"><span class="area__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.8.8 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg></span><b>Intellectual Property</b></div>
-              <div class="area"><span class="area__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m16 16 3-8 3 8c-2 1.5-4 1.5-6 0"/><path d="m2 16 3-8 3 8c-2 1.5-4 1.5-6 0"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg></span><b>Contractual Disputes</b></div>
-              <div class="area"><span class="area__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span><b>Defamation</b></div>
-              <div class="area"><span class="area__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span><b>Property &amp; Boundary</b></div>
-              <div class="area"><span class="area__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m8 11 2 2 4-4"/><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span><b>Judicial Review</b></div>
-            </div>
+        <div class="pa__panel" id="panel-corporate" role="tabpanel" aria-labelledby="tab-corporate" data-panel="corporate">
+          <div class="pa__grid">
+            <article class="pa__card reveal"><h3>Corporate Law</h3><p>Corporate law is one of our focus areas, with a wide arena of transactions, experience and expertise. We aid with the incorporation of companies every step of the way, and provide compliance advice and updated procedural steps to our corporate clients.</p></article>
+            <article class="pa__card reveal" data-d="1"><h3>Foreign Investment (Inbound)</h3><p>Our experience and connections enable us to provide a concierge service to those interested in investing in the Maldives. We bring forth practical solutions for the business objectives of our clients, within legal parameters.</p></article>
+            <article class="pa__card reveal" data-d="2"><h3>Hotels, Resorts &amp; Tourism</h3><p>Our lawyers provide well-rounded services to hospitality clients both new and existing in the industry — construction period extension, compliance with the tourism law, sale and purchase, and more.</p></article>
+            <article class="pa__card reveal"><h3>General Commercial</h3><p>Contracts and agreements are at the heart of commercial transactions. We draft, negotiate and execute agreements which protect the client’s every interest.</p></article>
+            <article class="pa__card reveal" data-d="1"><h3>Banking &amp; Financing</h3><p>We provide solutions to a myriad of challenges faced by our clients, navigating them through the process of borrowing with expert knowledge of the law in this sector.</p></article>
+            <article class="pa__card reveal" data-d="2"><h3>Mergers &amp; Acquisitions</h3><p>Our team takes a solution-oriented approach with local expertise to maximise deal value. We have engaged in several M&amp;A matters, helping us understand and overcome the obstacles in every phase of the transaction.</p></article>
+            <article class="pa__card reveal"><h3>Employment &amp; Labour</h3><p>Managing a workforce means staying up to date with local laws. We layer this knowledge onto our own and provide swift responses to queries and concerns such as work-visa applications.</p></article>
+            <article class="pa__card reveal" data-d="1"><h3>Insurance</h3><p>We provide pragmatic, strategic advice on complex insurance transactions — including the probability of success of a claim based on the insurance regulatory framework.</p></article>
+            <article class="pa__card reveal" data-d="2"><h3>Tax (GST / TGST)</h3><p>We advise on the possible tax implications of commercial transactions, and provide innovative solutions to our clients’ current involvements in this area.</p></article>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- ================= ★ Concierge (unique interactive section) ================= -->
-    <section class="section concierge" id="concierge">
-      <div class="concierge__bg"><img src="assets/img/banner.webp" alt="" aria-hidden="true" /></div>
-      <div class="wrap">
-        <div class="concierge__head reveal">
-          <div>
-            <span class="eyebrow eyebrow--light"><span class="eyebrow__no">03</span>The Concierge</span>
-            <h2 class="section__title">Not sure where to start? Let us guide you.</h2>
+        <div class="pa__panel is-hidden" id="panel-litigation" role="tabpanel" aria-labelledby="tab-litigation" data-panel="litigation" hidden>
+          <div class="pa__grid pa__grid--4">
+            <article class="pa__card reveal"><h3>Litigation</h3><p>The firm has handled a vast variety of complex cases, securing a win for the majority. Our familiarity with the battlefield allows us to guide clients to their desired outcome, with the best dispute-resolution strategy when an obstacle arises.</p></article>
+            <article class="pa__card reveal" data-d="1"><h3>Arbitration</h3><p>We offer a seamless solution to complex disputes outside of the court. Our team has experience liaising with foreign arbitrators and advising them on Maldives law as required by the rules of arbitration.</p></article>
+            <article class="pa__card reveal" data-d="2"><h3>Mediation</h3><p>We provide mediation services to clients who wish to avoid aggressive litigation and settle amicably — resolving conflicts while maintaining neutrality, to reach the most beneficial result for both parties.</p></article>
+            <article class="pa__card reveal" data-d="3"><h3>Investigations</h3><p>Where a client is uncertain of the legal terrain, we specialise in obtaining, reviewing and analysing data from multiple sources — providing the most accurate and clear picture on which to take well-informed decisions.</p></article>
           </div>
-          <p>Tell us who you are and what brings you in. In a moment, we’ll map the practice areas we’d bring to your matter — the way our legal concierge would in the room.</p>
-        </div>
-
-        <div class="concierge__engine reveal" data-d="1">
-          <!-- Picker -->
-          <div class="picker" role="group" aria-label="Build your legal brief">
-            <div class="picker__step">
-              <div class="picker__label"><span class="picker__num">1</span> Who are you?</div>
-              <div class="picker__opts" role="group" aria-label="Your profile">
-                <button type="button" class="pick active" data-sector="resort" aria-pressed="true">
-                  <span class="pick__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/></svg></span>
-                  <b>Resort &amp; Hospitality</b>
-                </button>
-                <button type="button" class="pick" data-sector="aviation" aria-pressed="false">
-                  <span class="pick__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg></span>
-                  <b>Aviation &amp; Airlines</b>
-                </button>
-                <button type="button" class="pick" data-sector="banking" aria-pressed="false">
-                  <span class="pick__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg></span>
-                  <b>Bank / Financial</b>
-                </button>
-                <button type="button" class="pick" data-sector="corporate" aria-pressed="false">
-                  <span class="pick__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="20" x="4" y="2" rx="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01M12 6h.01M16 6h.01M8 10h.01M12 10h.01M16 10h.01"/></svg></span>
-                  <b>Corporate / Enterprise</b>
-                </button>
-                <button type="button" class="pick" data-sector="individual" aria-pressed="false">
-                  <span class="pick__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></span>
-                  <b>Individual / Family</b>
-                </button>
-              </div>
-            </div>
-
-            <div class="picker__step">
-              <div class="picker__label"><span class="picker__num">2</span> What brings you in?</div>
-              <div class="picker__opts" role="group" aria-label="Your need">
-                <button type="button" class="pick active" data-need="venture" aria-pressed="true">
-                  <span class="pick__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-2-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/></svg></span>
-                  <b>Starting or investing</b>
-                </button>
-                <button type="button" class="pick" data-need="deal" aria-pressed="false">
-                  <span class="pick__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v5h5"/><path d="m9 15 2 2 4-4"/></svg></span>
-                  <b>A deal or contract</b>
-                </button>
-                <button type="button" class="pick" data-need="dispute" aria-pressed="false">
-                  <span class="pick__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m16 16 3-8 3 8c-2 1.5-4 1.5-6 0"/><path d="m2 16 3-8 3 8c-2 1.5-4 1.5-6 0"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg></span>
-                  <b>A dispute or claim</b>
-                </button>
-                <button type="button" class="pick" data-need="compliance" aria-pressed="false">
-                  <span class="pick__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span>
-                  <b>Compliance &amp; regulation</b>
-                </button>
-                <button type="button" class="pick" data-need="retainer" aria-pressed="false">
-                  <span class="pick__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H4a1 1 0 0 1-1-1z"/><path d="M21 14h-3a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2a1 1 0 0 0 1-1z"/><path d="M3 14a9 9 0 0 1 18 0"/></svg></span>
-                  <b>Ongoing counsel</b>
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Result -->
-          <div class="result" id="conciergeResult" aria-live="polite">
-            <span class="result__badge">Tailored for you</span>
-            <h3 class="result__title">Select above to begin</h3>
-            <p class="result__note">Choose your profile and what brings you in, and we’ll map the right practice areas for your matter.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= Sectors ================= -->
-    <section class="section sectors" id="sectors">
-      <div class="wrap">
-        <div class="section__head section__head--center reveal">
-          <span class="eyebrow"><span class="eyebrow__no">04</span>Sector focus</span>
-          <h2 class="section__title">We speak the language of your industry.</h2>
-          <p class="section__intro">We already understand the commercial pressures our clients operate under — and structure our advice accordingly.</p>
-        </div>
-
-        <div class="sectors__grid">
-          <article class="sector reveal">
-            <div class="sector__img"><img src="assets/img/img-4610.webp" alt="Maldivian resort water villas over a turquoise lagoon" loading="lazy" /></div>
-            <div class="sector__body">
-              <span class="sector__num">01</span>
-              <h3>Resorts &amp; Hospitality</h3>
-              <p>The full lifecycle — from island lease and development to operations, supplier contracts, employment and guest liability.</p>
-              <div class="sector__tags"><span>Tourism Act</span><span>Leasing</span><span>Operations</span></div>
-            </div>
-          </article>
-
-          <article class="sector reveal" data-d="1">
-            <div class="sector__img"><img src="assets/img/seaplane-mv.webp" alt="A Maldivian seaplane on the turquoise lagoon at a resort" loading="lazy" /></div>
-            <div class="sector__body">
-              <span class="sector__num">02</span>
-              <h3>Aviation &amp; Airlines</h3>
-              <p>Carriers, seaplane and ground operators — regulatory compliance, operating and handling agreements, leasing and liability.</p>
-              <div class="sector__tags"><span>Civil aviation</span><span>Licensing</span><span>Leasing</span></div>
-            </div>
-          </article>
-
-          <article class="sector reveal" data-d="2">
-            <div class="sector__img"><img src="assets/img/male-city.webp" alt="The Malé city skyline at dusk over the water — the Maldives' commercial capital" loading="lazy" /></div>
-            <div class="sector__body">
-              <span class="sector__num">03</span>
-              <h3>Banking, Finance &amp; Corporates</h3>
-              <p>Financing and security, regulatory compliance, major commercial contracts, governance and high-value disputes.</p>
-              <div class="sector__tags"><span>Finance</span><span>Telecom</span><span>Corporates</span></div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= Insights ================= -->
-    <section class="section insights" id="insights">
-      <div class="wrap">
-        <div class="section__head section__head--center reveal">
-          <span class="eyebrow"><span class="eyebrow__no">05</span>Insights &amp; updates</span>
-          <h2 class="section__title">Legal developments, made clear.</h2>
-          <p class="section__intro">Concise, practical summaries of the laws and regulations shaping business in the Maldives.</p>
-        </div>
-
-        <div class="insights__filters reveal" id="insightsFilters" role="group" aria-label="Filter insights by topic" hidden></div>
-
-        <div class="insights__grid" id="insightsGrid">
-          <article class="post reveal" data-category="Forex">
-            <a class="post__thumb" href="https://www.nasheeds.co/blog/new-forex-bill-in-the-maldives-what-businesses-need-to-know" target="_blank" rel="noopener">
-              <span class="post__cat">Forex</span>
-              <img src="assets/img/texture.webp" alt="Hands counting US dollar notes" loading="lazy" />
-            </a>
-            <div class="post__body">
-              <span class="post__date">December 3, 2024</span>
-              <h3 class="post__title">New Forex Bill in the Maldives: What Businesses Need to Know</h3>
-              <p class="post__excerpt">The MMA announced a new Foreign Exchange Bill on 26 November 2024, set to replace the regulation that took effect only weeks earlier. Here’s what it means.</p>
-              <a class="textlink" href="https://www.nasheeds.co/blog/new-forex-bill-in-the-maldives-what-businesses-need-to-know" target="_blank" rel="noopener">Read more
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-              </a>
-            </div>
-          </article>
-
-          <article class="post reveal" data-d="1" data-category="Regulation">
-            <a class="post__thumb" href="https://www.nasheeds.co/news/maldives-to-enforce-new-seaplane-platform-licensing-regulation" target="_blank" rel="noopener">
-              <span class="post__cat">Regulation</span>
-              <img src="assets/img/untitled-38.webp" alt="A Maldivian government gazette document" loading="lazy" />
-            </a>
-            <div class="post__body">
-              <span class="post__date">January 27, 2025</span>
-              <h3 class="post__title">Maldives to Enforce New Seaplane Platform Licensing Regulation</h3>
-              <p class="post__excerpt">A new licensing regime is coming for seaplane platforms. We break down the obligations for operators and what to prepare now.</p>
-              <a class="textlink" href="https://www.nasheeds.co/news/maldives-to-enforce-new-seaplane-platform-licensing-regulation" target="_blank" rel="noopener">Read more
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-              </a>
-            </div>
-          </article>
-
-          <article class="post reveal" data-d="2" data-category="Tourism">
-            <a class="post__thumb" href="https://www.nasheeds.co/blog/lease-extension-development-under-the-15th-amendment-to-the-tourism-act" target="_blank" rel="noopener">
-              <span class="post__cat">Tourism</span>
-              <img src="assets/img/img-4610.webp" alt="Maldivian resort water villas" loading="lazy" />
-            </a>
-            <div class="post__body">
-              <span class="post__date">May 26, 2025</span>
-              <h3 class="post__title">Lease Extension: Development under the 15th Amendment to the Tourism Act</h3>
-              <p class="post__excerpt">What the 15th Amendment means for island lease extensions and resort development — the key provisions in plain terms.</p>
-              <a class="textlink" href="https://www.nasheeds.co/blog/lease-extension-development-under-the-15th-amendment-to-the-tourism-act" target="_blank" rel="noopener">Read more
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-              </a>
-            </div>
-          </article>
         </div>
       </div>
     </section>
@@ -450,7 +224,7 @@
     <section class="section team" id="team">
       <div class="wrap">
         <div class="section__head section__head--center reveal">
-          <span class="eyebrow"><span class="eyebrow__no">06</span>Our team</span>
+          <span class="eyebrow"><span class="eyebrow__no">03</span>Our team</span>
           <h2 class="section__title">The people behind your counsel.</h2>
           <p class="section__intro">A compact, senior team — you work directly with the lawyer handling your matter, not a rotating cast of names.</p>
         </div>
@@ -504,6 +278,88 @@
       </div>
     </section>
 
+    <!-- ================= Resources ================= -->
+    <section class="section resources" id="resources">
+      <div class="wrap">
+        <div class="section__head section__head--center reveal">
+          <span class="eyebrow"><span class="eyebrow__no">04</span>Resources</span>
+          <h2 class="section__title">Insights, guides &amp; downloads.</h2>
+          <p class="section__intro">Concise, practical resources on the laws and regulations shaping business in the Maldives.</p>
+        </div>
+
+        <div class="res__grid">
+          <a class="res__card reveal" href="https://www.nasheeds.co/news" target="_blank" rel="noopener">
+            <span class="res__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8M15 18h-5M10 6h8v4h-8V6Z"/></svg></span>
+            <h3>Updates</h3>
+            <p>All recent legal and regulatory updates.</p>
+            <span class="res__go">View updates <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="res__card reveal" data-d="1" href="https://www.nasheeds.co/blog" target="_blank" rel="noopener">
+            <span class="res__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v5h5"/><path d="M9 13h6M9 17h4"/></svg></span>
+            <h3>Blog</h3>
+            <p>All blog articles published by the firm.</p>
+            <span class="res__go">Read the blog <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="res__card reveal" data-d="2" href="https://www.nasheeds.co" target="_blank" rel="noopener">
+            <span class="res__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span>
+            <h3>Guides</h3>
+            <p>Practical guides made by our lawyers.</p>
+            <span class="res__go">Browse guides <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="res__card reveal" data-d="3" href="https://www.nasheeds.co" target="_blank" rel="noopener">
+            <span class="res__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg></span>
+            <h3>Downloads</h3>
+            <p>Forms, templates and other downloads.</p>
+            <span class="res__go">Get downloads <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="res__card reveal" data-d="3" href="https://www.nasheeds.co" target="_blank" rel="noopener">
+            <span class="res__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="M16 13H8M16 17H8M10 9H8"/></svg></span>
+            <h3>Terms</h3>
+            <p>Our Terms of Service.</p>
+            <span class="res__go">Read terms <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FAQs ================= -->
+    <section class="section faqs" id="faqs">
+      <div class="wrap faqs__wrap">
+        <div class="section__head section__head--center reveal">
+          <span class="eyebrow"><span class="eyebrow__no">05</span>FAQs</span>
+          <h2 class="section__title">Frequently asked questions.</h2>
+          <p class="section__intro">Answers to the questions we’re asked most. Don’t see yours? Just get in touch.</p>
+        </div>
+
+        <div class="faq reveal">
+          <details class="faq__item">
+            <summary>What areas of law does Nasheed &amp; Co practice?<span class="faq__ic" aria-hidden="true"></span></summary>
+            <div class="faq__a"><p>We are a corporate and commercial law firm. Our work spans two divisions — <b>Corporate</b> (corporate law, foreign investment, hotels &amp; tourism, banking &amp; finance, M&amp;A, employment, insurance and tax) and <b>Litigation</b> (litigation, arbitration, mediation and investigations).</p></div>
+          </details>
+          <details class="faq__item">
+            <summary>How do I start working with the firm?<span class="faq__ic" aria-hidden="true"></span></summary>
+            <div class="faq__a"><p>Reach out via the contact form, phone or email. We’ll arrange a brief, confidential meeting to understand your matter, then send a tailored engagement letter with a defined scope and transparent pricing before any work begins.</p></div>
+          </details>
+          <details class="faq__item">
+            <summary>Do you advise foreign investors?<span class="faq__ic" aria-hidden="true"></span></summary>
+            <div class="faq__a"><p>Yes. We provide a concierge service to those investing in the Maldives — bringing practical solutions to your business objectives within the legal framework, from structuring to approvals and compliance.</p></div>
+          </details>
+          <details class="faq__item">
+            <summary>Can consultations be done remotely?<span class="faq__ic" aria-hidden="true"></span></summary>
+            <div class="faq__a"><p>Absolutely. In-person and remote consultations are both available. If you can’t make it into the office, simply call or email us and we’ll arrange a convenient time.</p></div>
+          </details>
+          <details class="faq__item">
+            <summary>How are your fees structured?<span class="faq__ic" aria-hidden="true"></span></summary>
+            <div class="faq__a"><p>Engagements are scoped to your needs — a single transaction handled, or an ongoing retained relationship. Every engagement letter sets out a defined scope and transparent pricing, so there are no surprises.</p></div>
+          </details>
+          <details class="faq__item">
+            <summary>Where is your office?<span class="faq__ic" aria-hidden="true"></span></summary>
+            <div class="faq__a"><p>3rd Floor, H. Magma, Sikka Goalhi, Malé — right behind the south wall of the Maldives Parliament House. See the <a class="textlink" href="#contact">contact section</a> for full details.</p></div>
+          </details>
+        </div>
+      </div>
+    </section>
+
     <!-- ================= CTA band ================= -->
     <section class="cta-band">
       <div class="cta-band__bg"><img src="assets/img/banner.webp" alt="" aria-hidden="true" /></div>
@@ -513,7 +369,7 @@
           <p>We’d welcome a brief, confidential meeting to understand your needs — then a tailored engagement letter with a defined scope and transparent pricing.</p>
         </div>
         <div class="cta-band__actions">
-          <a class="btn btn--gold" href="#contact">Book a consultation
+          <a class="btn btn--gold" href="#contact">Contact us
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
           <a class="btn btn--on-navy" href="tel:+9603318558">Call +960 331 8558</a>
@@ -526,7 +382,7 @@
       <div class="wrap contact__grid">
         <div class="contact__info reveal">
           <div class="section__head" style="margin-bottom:1rem">
-            <span class="eyebrow"><span class="eyebrow__no">07</span>Contact</span>
+            <span class="eyebrow"><span class="eyebrow__no">06</span>Contact us</span>
             <h2 class="section__title">Let’s talk about your matter.</h2>
             <p class="section__intro">In-person and remote options available. Can’t make it into the office? Just email us.</p>
           </div>
@@ -620,17 +476,16 @@
           <h4>Company</h4>
           <a href="#about">About Us</a>
           <a href="#team">Our Team</a>
-          <a href="#contact">Career</a>
-          <a href="#contact">Contact</a>
-          <a href="#concierge">The Concierge</a>
+          <a href="#faqs">FAQs</a>
+          <a href="#contact">Contact Us</a>
         </div>
 
         <div class="footer__col">
-          <h4>Expertise</h4>
-          <a href="#expertise">Corporate &amp; Commercial</a>
-          <a href="#expertise">Litigation &amp; Disputes</a>
-          <a href="#sectors">Sectors</a>
-          <a href="#insights">Insights</a>
+          <h4>Practice areas</h4>
+          <a href="#practice">Corporate &amp; Commercial</a>
+          <a href="#practice">Litigation &amp; Disputes</a>
+          <a href="#resources">Resources</a>
+          <a href="#home">Insights</a>
         </div>
 
         <div class="footer__col">

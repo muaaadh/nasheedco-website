@@ -292,4 +292,68 @@
       ok && ok.scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
   }
+
+  /* =========================================================
+     Practice-area tabs (Corporate / Litigation)
+     ========================================================= */
+  const paTabs = $$('.pa__tab');
+  const paPanels = $$('.pa__panel');
+  function activateTab(name) {
+    paTabs.forEach(t => {
+      const on = t.dataset.tab === name;
+      t.classList.toggle('is-active', on);
+      t.setAttribute('aria-selected', String(on));
+    });
+    paPanels.forEach(p => {
+      const on = p.dataset.panel === name;
+      p.classList.toggle('is-hidden', !on);
+      if (on) p.removeAttribute('hidden'); else p.setAttribute('hidden', '');
+    });
+  }
+  paTabs.forEach(t => t.addEventListener('click', () => activateTab(t.dataset.tab)));
+  // Arrow-key roving between tabs (WAI-ARIA tablist pattern)
+  paTabs.forEach((t, i) => t.addEventListener('keydown', (e) => {
+    let next = -1;
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next = (i + 1) % paTabs.length;
+    else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') next = (i - 1 + paTabs.length) % paTabs.length;
+    else if (e.key === 'Home') next = 0;
+    else if (e.key === 'End') next = paTabs.length - 1;
+    if (next === -1) return;
+    e.preventDefault();
+    activateTab(paTabs[next].dataset.tab);
+    paTabs[next].focus();
+  }));
+
+  /* =========================================================
+     Site search — filters practice areas, insights & resources
+     ========================================================= */
+  const searchBtn = $('#navSearch');
+  const searchBar = $('#searchBar');
+  const searchInput = $('#searchInput');
+  const searchClose = $('#searchClose');
+  if (searchBtn && searchBar && searchInput) {
+    const targets = () => $$('.pa__card, .feed__card, .res__card, .newslist li, .faq__item');
+    function applySearch(raw) {
+      const q = (raw || '').trim().toLowerCase();
+      if (q) $$('.pa__panel').forEach(p => { p.classList.remove('is-hidden'); p.removeAttribute('hidden'); });
+      else { const at = $('.pa__tab.is-active'); activateTab(at ? at.dataset.tab : 'corporate'); }
+      let hits = 0;
+      targets().forEach(el => {
+        const match = !q || el.textContent.toLowerCase().indexOf(q) !== -1;
+        el.classList.toggle('search-hide', !match);
+        if (match && q) hits++;
+      });
+      let note = $('#searchEmpty');
+      if (q && hits === 0) {
+        if (!note) { note = document.createElement('p'); note.id = 'searchEmpty'; note.className = 'search-empty'; note.textContent = 'No matches — try another term, or contact us directly.'; searchBar.after(note); }
+        note.hidden = false;
+      } else if (note) { note.hidden = true; }
+    }
+    function openSearch() { searchBar.hidden = false; searchBtn.setAttribute('aria-expanded', 'true'); setTimeout(() => searchInput.focus(), 20); }
+    function closeSearch() { searchBar.hidden = true; searchBtn.setAttribute('aria-expanded', 'false'); searchInput.value = ''; applySearch(''); searchBtn.focus(); }
+    searchBtn.addEventListener('click', () => { searchBar.hidden ? openSearch() : closeSearch(); });
+    searchClose && searchClose.addEventListener('click', closeSearch);
+    searchInput.addEventListener('input', () => applySearch(searchInput.value));
+    searchInput.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeSearch(); });
+  }
 })();

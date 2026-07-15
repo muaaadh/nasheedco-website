@@ -2,16 +2,16 @@
    Nasheed & Co — Admin Portal (draft, client-side demo)
    ========================================================= */
 :root{
-  --navy:#13314e; --navy-700:#0f2942; --navy-900:#0a1d31; --navy-600:#1c4467;
-  --gold:#c2a15e; --gold-soft:#e2cd9d; --gold-deep:#a9863f;
-  --ivory:#f6f3ec; --paper:#ffffff; --surface:#fbfaf6;
+  --navy:#1f3a63; --navy-700:#274a86; --navy-900:#15294a; --navy-600:#4472C4;
+  --gold:#4472C4; --gold-soft:#b8cbea; --gold-deep:#2f5597;
+  --ivory:#eef2fa; --paper:#ffffff; --surface:#f5f8fd;
   --ink:#16202c; --muted:#566372; --muted-2:#8492a1;
-  --line:rgba(19,49,78,.12); --line-strong:rgba(19,49,78,.2); --line-light:rgba(255,255,255,.14);
-  --ok:#1f7a54; --ok-bg:rgba(31,122,84,.1); --warn:#b25a12; --danger:#c0392b; --danger-bg:rgba(192,57,43,.08);
+  --line:rgba(31,58,99,.12); --line-strong:rgba(31,58,99,.2); --line-light:rgba(255,255,255,.14);
+  --ok:#1f7a54; --ok-bg:rgba(31,122,84,.1); --warn:#2f5597; --danger:#c0392b; --danger-bg:rgba(192,57,43,.08);
   --serif:"Libre Franklin",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-  --shadow-sm:0 1px 2px rgba(10,29,49,.05),0 1px 3px rgba(10,29,49,.05);
-  --shadow-md:0 12px 34px -10px rgba(10,29,49,.16),0 3px 10px -4px rgba(10,29,49,.08);
-  --shadow-lg:0 44px 90px -24px rgba(10,29,49,.30),0 14px 32px -14px rgba(10,29,49,.18);
+  --shadow-sm:0 1px 2px rgba(21,41,74,.05),0 1px 3px rgba(21,41,74,.05);
+  --shadow-md:0 12px 34px -10px rgba(21,41,74,.16),0 3px 10px -4px rgba(21,41,74,.08);
+  --shadow-lg:0 44px 90px -24px rgba(21,41,74,.30),0 14px 32px -14px rgba(21,41,74,.18);
   --ease:cubic-bezier(.22,.61,.36,1);
 }
 *,*::before,*::after{ box-sizing:border-box; }
@@ -61,7 +61,7 @@ img{ max-width:100%; display:block; }
 .field label{ display:block; font-size:.78rem; font-weight:600; color:var(--navy-700); margin-bottom:.4rem; letter-spacing:.02em; }
 .field input,.field select,.field textarea{ width:100%; padding:.72em .85em; border-radius:10px; border:1px solid var(--line-strong);
   background:var(--surface); color:var(--ink); font:inherit; font-size:.92rem; transition:border-color .2s, box-shadow .2s, background .2s; }
-.field input:focus,.field select:focus,.field textarea:focus{ outline:none; border-color:var(--gold); background:#fff; box-shadow:0 0 0 3px rgba(194,161,94,.2); }
+.field input:focus,.field select:focus,.field textarea:focus{ outline:none; border-color:var(--gold); background:#fff; box-shadow:0 0 0 3px rgba(68,114,196,.2); }
 .field textarea{ resize:vertical; min-height:90px; }
 .field__row{ display:grid; grid-template-columns:1fr 1fr; gap:.9rem; }
 @media (max-width:520px){ .field__row{ grid-template-columns:1fr; } }
@@ -85,7 +85,7 @@ img{ max-width:100%; display:block; }
 
 .main{ min-width:0; display:flex; flex-direction:column; }
 .topbar{ position:sticky; top:0; z-index:20; display:flex; align-items:center; gap:1rem; justify-content:space-between;
-  padding:16px clamp(18px,3vw,34px); background:rgba(246,243,236,.85); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); }
+  padding:16px clamp(18px,3vw,34px); background:rgba(238,242,250,.85); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); }
 .topbar__title h1{ font-size:1.45rem; color:var(--navy); }
 .topbar__title p{ font-size:.85rem; color:var(--muted); }
 .topbar__right{ display:flex; align-items:center; gap:.7rem; }
@@ -95,7 +95,7 @@ img{ max-width:100%; display:block; }
 .hamburger span{ width:18px; height:2px; background:var(--navy); border-radius:2px; }
 
 /* Sidebar scrim — fixed (never a grid item), shown only when drawer is open */
-.sidebar__scrim{ position:fixed; inset:0; background:rgba(10,29,49,.5); z-index:110; opacity:0; visibility:hidden; transition:opacity .3s, visibility .3s; }
+.sidebar__scrim{ position:fixed; inset:0; background:rgba(21,41,74,.5); z-index:110; opacity:0; visibility:hidden; transition:opacity .3s, visibility .3s; }
 .sidebar__scrim.open{ opacity:1; visibility:visible; }
 
 .view{ padding:clamp(20px,3vw,36px); }
@@ -146,7 +146,7 @@ img{ max-width:100%; display:block; }
 .iconbtn svg{ width:16px; height:16px; }
 .iconbtn:hover{ background:var(--navy); color:#fff; border-color:var(--navy); }
 .iconbtn--danger:hover{ background:var(--danger); border-color:var(--danger); }
-.row.unread{ background:rgba(194,161,94,.06); }
+.row.unread{ background:rgba(68,114,196,.06); }
 .row__dot{ width:8px; height:8px; border-radius:50%; background:var(--gold); flex-shrink:0; }
 @media (max-width:640px){
   .row{ flex-wrap:wrap; }
@@ -183,7 +183,7 @@ img{ max-width:100%; display:block; }
 .member-row:last-child{ border-bottom:none; }
 .member-row__av{ width:46px; height:46px; border-radius:50%; flex-shrink:0; overflow:hidden; display:grid; place-items:center;
   font-family:var(--serif); font-weight:600; font-size:1rem; color:var(--gold-soft);
-  background:linear-gradient(160deg,var(--navy-600),var(--navy-900)); box-shadow:inset 0 0 0 1px rgba(194,161,94,.45); }
+  background:linear-gradient(160deg,var(--navy-600),var(--navy-900)); box-shadow:inset 0 0 0 1px rgba(68,114,196,.45); }
 .member-row__av img{ width:100%; height:100%; object-fit:cover; object-position:center 22%; display:block; }
 .member-row__main{ flex:1; min-width:0; }
 .member-row__name{ font-weight:600; color:var(--navy); font-size:.98rem; }
@@ -199,7 +199,7 @@ img{ max-width:100%; display:block; }
 /* Modal */
 .modal{ position:fixed; inset:0; z-index:100; display:none; align-items:flex-start; justify-content:center; padding:24px; overflow-y:auto; }
 .modal.open{ display:flex; }
-.modal__scrim{ position:fixed; inset:0; background:rgba(10,29,49,.55); backdrop-filter:blur(3px); }
+.modal__scrim{ position:fixed; inset:0; background:rgba(21,41,74,.55); backdrop-filter:blur(3px); }
 .modal__card{ position:relative; width:100%; max-width:560px; background:var(--paper); border-radius:18px; box-shadow:var(--shadow-lg); margin:auto; }
 .modal__head{ display:flex; align-items:center; justify-content:space-between; padding:1.2rem 1.4rem; border-bottom:1px solid var(--line); }
 .modal__head h3{ font-size:1.25rem; color:var(--navy); }
@@ -222,7 +222,7 @@ img{ max-width:100%; display:block; }
 .thumbs img{ width:100%; height:100%; object-fit:cover; }
 .thumbs input{ position:absolute; opacity:0; }
 .thumbs input:checked + img{ outline:2px solid var(--gold); }
-.thumbs label:has(input:checked){ border-color:var(--gold); box-shadow:0 0 0 3px rgba(194,161,94,.25); }
+.thumbs label:has(input:checked){ border-color:var(--gold); box-shadow:0 0 0 3px rgba(68,114,196,.25); }
 @media (max-width:520px){ .thumbs{ grid-template-columns:repeat(3,1fr); } }
 
 /* Mobile sidebar drawer */
